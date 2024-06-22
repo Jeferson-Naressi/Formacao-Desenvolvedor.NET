@@ -1,9 +1,11 @@
 Sobre o curso:
--Comecei a explorar o desenvolvimento de aplicações web com ASP.NET MVC. 
-Muitos preferem esse modelo porque ele utiliza o Razor para renderização server-side, oferecendo recursos incríveis.
+Fundamentos do ASP.NET MVC
 
--Estou participando do curso que ensina como o MVC funciona e abrange todas as suas funcionalidades essenciais. 
-Durante o curso, construímos uma aplicação funcional do zero, o que me ajudou a entender cada passo do processo.
+Nesta etapa do curso vi que o desenvolvimento web com ASP.NET MVC Core, está crescendo e se tornando cada vez mais relevante. 
+Muitos desenvolvedores, incluindo eu, preferem o modelo de renderização server-side que o ASP.NET MVC oferece, especialmente porque ele utiliza o Razor, que proporciona recursos incríveis e facilita o desenvolvimento.
 
--Ao final do curso, estarei capacitado para desenvolver novas aplicações e também para manter e melhorar aplicações existentes. 
-O curso é compatível com todas as versões do ASP.NET Core, e estamos usando o Visual Studio para desenvolver a aplicação final.
+O curso que está me ensinando de maneira prática como o MVC funciona e quais são suas funcionalidades essenciais. 
+Desde o primeiro dia, já começamos a construir uma aplicação funcional do zero. É incrível ver como, passo a passo, tudo vai se encaixando e ganhando forma!
+
+O curso é bem abrangente e suporta todas as versões do ASP.NET Core, o que é ótimo porque posso aplicar o que estou aprendendo em diferentes contextos e versões da tecnologia. 
+Estamos utilizando o Visual Studio para a construção da aplicação final, e essa ferramenta tem sido essencial para facilitar o desenvolvimento e tornar o processo ainda mais eficiente.
