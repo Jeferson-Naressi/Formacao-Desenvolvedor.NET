@@ -1,12 +1,10 @@
 # Curso-Desenvolvedor.io
 ## Formação Desenvolvedor .NET
 
-Decidi mergulhar na Formação Desenvolvedor .NET para me tornar um profissional completo no mundo do .NET (DotNet). 
-Essa formação é uma verdadeira imersão que me está ensinando todos os conceitos fundamentais necessários para começar com o pé direito nessa tecnologia incrível!
+A Formação Desenvolvedor .NET foi a escolha perfeita. Essa formação tem sido completa, e eu estou aprendendo tudo, desde os conceitos mais básicos até as práticas avançadas, essenciais para iniciar uma carreira de sucesso nessa tecnologia fantástica!
 
-Estou aprendendo o .NET a partir do zero, começando pelos fundamentos da linguagem C#. 
-A formação abrange desde os conceitos básicos até o desenvolvimento de aplicações Web com MVC, e a construção de APIs.
+O curso começa com os fundamentos do C#, a base para tudo que vamos construir. Estou entendendo a linguagem do zero, o que tem sido ótimo para solidificar minhas habilidades. A cada módulo, estou me sentindo mais confiante, especialmente quando o foco se volta para o desenvolvimento de aplicações Web com MVC e a criação de APIs. É empolgante ver como as peças se encaixam e o quanto posso fazer com o .NET!
 
-Este curso está me preparando totalmente para o mercado de trabalho. 
-Estou adquirindo as habilidades necessárias para iniciar minha carreira como desenvolvedor .NET, utilizando as melhores práticas e técnicas atuais. 
-Estou confiante de que, ao final da formação, estarei pronto para dar os primeiros passos rumo a me tornar um desenvolvedor .NET competente.
+Uma das coisas mais motivadoras é saber que esta formação está me preparando completamente para o mercado de trabalho. Eu me sinto cada vez mais pronto para iniciar minha carreira como desenvolvedor .NET. As melhores práticas e técnicas que estou aprendendo me dão a certeza de que estarei bem equipado para enfrentar os desafios reais do mundo da programação.
+
+Estou realmente animado com o futuro. Com essa formação, sinto que estou dando os passos certos para me tornar um desenvolvedor .NET competente, capaz de criar soluções eficientes e inovadoras. É um grande começo para uma jornada que promete ser incrível!
