@@ -1,3 +1,11 @@
-Recentemente, decidi mergulhar no desenvolvimento de aplicações com o ASP.NET Core da Microsoft, e o que descobri foi impressionante. A Microsoft reescreveu completamente essa plataforma, criando o .NET Core do zero. O ASP.NET Core é 100% open-source e é considerado o framework mais rápido do mundo, chegando a superar o NodeJS em desempenho por um fator de 10.
-Neste curso que estou fazendo, estou aprendendo tudo sobre a plataforma .NET e o ASP.NET Core. Comecei entendendo como preparar minha máquina para o desenvolvimento e quais softwares são essenciais para iniciar.
-O curso aborda desde o básico do ASP.NET Core, ideal para quem está começando. Estou explorando várias formas de desenvolvimento com ele, incluindo Web Sites utilizando MVC, criação de APIs, e também tecnologias mais novas como Blazor e Razor Pages. A experiência tem sido enriquecedora e estou animado para continuar aprendendo e aplicando esse conhecimento em meus projetos.
+#Sobre o curso:
+Recentemente, comecei a explorar o desenvolvimento de aplicações web com ASP.NET MVC Core, e tenho visto como essa tecnologia está se tornando cada vez mais popular entre os desenvolvedores. 
+Muitos preferem esse modelo porque ele utiliza o Razor para renderização server-side, oferecendo recursos incríveis.
+
+Estou participando de um curso que ensina como o MVC funciona e abrange todas as suas funcionalidades essenciais. 
+Durante o curso, construímos uma aplicação funcional do zero, o que me ajudou a entender cada passo do processo.
+
+Ao final do curso, estarei capacitado para desenvolver novas aplicações e também para manter e melhorar aplicações existentes. 
+O curso é compatível com todas as versões do ASP.NET Core, e estamos usando o Visual Studio 2022 para desenvolver a aplicação final.
+
+#Curiosidades
