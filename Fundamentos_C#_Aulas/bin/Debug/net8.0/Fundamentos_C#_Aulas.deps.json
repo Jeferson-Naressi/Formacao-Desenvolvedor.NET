@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Fundamentos_C#_Aulas/1.0.0": {
+        "runtime": {
+          "Fundamentos_C#_Aulas.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Fundamentos_C#_Aulas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
