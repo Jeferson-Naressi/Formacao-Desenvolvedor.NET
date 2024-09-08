@@ -11,14 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-PrimeiraApp-876e5b83-8c9b-4c48-b206-4c4aef69f80f")]
-[assembly: System.Reflection.AssemblyCompanyAttribute("PrimeiraApp")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("SiteDeFilmes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34c09da747d429711f58f4bc8e14a9796ccd1c30")]
-[assembly: System.Reflection.AssemblyProductAttribute("PrimeiraApp")]
-[assembly: System.Reflection.AssemblyTitleAttribute("PrimeiraApp")]
+[assembly: System.Reflection.AssemblyProductAttribute("SiteDeFilmes")]
+[assembly: System.Reflection.AssemblyTitleAttribute("SiteDeFilmes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
