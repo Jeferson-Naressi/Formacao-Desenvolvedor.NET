@@ -1,5 +1,4 @@
-# Curso-Desenvolvedor.io
-## Formação Desenvolvedor .NET
+# Formação Desenvolvedor .NET
 
 A Formação Desenvolvedor .NET foi a escolha perfeita. Essa formação tem sido completa, e eu estou aprendendo tudo, desde os conceitos mais básicos até as práticas avançadas, essenciais para iniciar uma carreira de sucesso nessa tecnologia fantástica!
 
