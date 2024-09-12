@@ -21,10 +21,16 @@ namespace SiteDeFilmes.Data
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) 
     {
-        modelBuilder.Entity<FilmesGenero>(p => {
-            p.ToTable("ElencoGenero"); //Nome da tablema
-            p.HasKey(p => p.Id);  //chave primaria
-            p.Property(p => p.IdGenero);  
+        modelBuilder.Entity<Atores>(a => {
+            a.ToTable("Atores"); //Nome da tabeaa
+            a.HasKey(a => a.Id);  //chave primaria
+            a.Property(a => a.PrimeiroNome);
+            a.Property(a => a.UltimoNome);
+            a.Property(a => a.Genero);
+            
+            a.HasMany(a => a.ElencoFilmes)
+            .WithOne(e => e.Ator)
+            .HasForeignKey(e => e.IdAtor); //Chave secundaria
         } );
     }
 
