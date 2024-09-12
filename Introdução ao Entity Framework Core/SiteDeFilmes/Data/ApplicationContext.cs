@@ -32,7 +32,7 @@ namespace SiteDeFilmes.Data
             .WithOne(e => e.Ator)
             .HasForeignKey(e => e.IdAtor); //Chave secundaria
         } );
-           modelBuilder.Entity<Filmes>(f => {
+        modelBuilder.Entity<Filmes>(f => {
         	  f.ToTable("Filmes");
         	  f.Haskey(f => f.Id);
         	  f.Property(f => f.Nome);
