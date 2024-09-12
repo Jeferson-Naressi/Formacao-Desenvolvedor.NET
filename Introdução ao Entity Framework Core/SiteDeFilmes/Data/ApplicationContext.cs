@@ -12,9 +12,9 @@ namespace SiteDeFilmes.Data
         public DbSet<Atores> Atores{ get; set; }
         public DbSet<Filmes> Filmes{ get; set; }
         public DbSet<ElencoFilmes> ElencoFilmes{ get; set; }
-        public DbSet<FilmeGenero> ElencoGenero{ get; set; }
+        public DbSet<FilmesGenero> ElencoGenero{ get; set; }
         public DbSet<Genero> Genero{ get; set; }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer("Data source=(localdb)\\mssqllocaldb;Inicial Catalog=SiteDeFilmes;Integrated Security=true");
         }
@@ -22,7 +22,7 @@ namespace SiteDeFilmes.Data
     protected override void OnModelCreating(ModelBuilder modelBuilder) 
     {
         modelBuilder.Entity<Atores>(a => {
-            a.ToTable("Atores"); //Nome da tabeaa
+            a.ToTable("Atores"); //Nome da tablema
             a.HasKey(a => a.Id);  //chave primaria
             a.Property(a => a.PrimeiroNome);
             a.Property(a => a.UltimoNome);
@@ -30,7 +30,7 @@ namespace SiteDeFilmes.Data
             
             a.HasMany(a => a.ElencoFilmes)
             .WithOne(e => e.Ator)
-            .HasForeignKey(e => e.IdAtor); //Chave secundaria
+            .HasForeignKey(e => e.IdAtor);
         } );
         modelBuilder.Entity<Filmes>(f => {
         	  f.ToTable("Filmes");
@@ -40,9 +40,19 @@ namespace SiteDeFilmes.Data
         	  f.Property(f => f.duracao);
         	  
         	  f.HasMany(f => f.ElencoFilmes)
-        	  .WithOnr(e => e.Ator)
-        	  .HasForeignKey(e => e.IdAtor);
+        	  .WithOne(e => e.Filmes)
+        	  .HasForeignKey(e => e.IdFilmes);
         } );
+        modelBuilder.Entity<Generos>(g => {
+        	  g.ToTable("Genero");
+        	  g.Haskey(g => g.Id);
+        	  g.Property(g => g.Genero);
+        	  
+        	  g.HasMany(g => g.FilmesGenero)
+        	  .WithOne(e => e.Genero)
+        	  .HasForeignKey(e => e.IdGenero);
+        } );
+
     }
 
     }
