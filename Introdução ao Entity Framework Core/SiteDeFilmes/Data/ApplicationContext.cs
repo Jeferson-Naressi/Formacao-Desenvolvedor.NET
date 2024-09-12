@@ -9,8 +9,12 @@ namespace SiteDeFilmes.Data
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<ElencoFilme> ElencoFilmes{ get; set; }
-        public DbSet<FilmesGenero> FilmesGeneros{ get; set; }
+        public DbSet<Atores> Atores{ get; set; }
+        public DbSet<Filmes> Filmes{ get; set; }
+        public DbSet<ElencoFilmes> ElencoFilmes{ get; set; }
+        public DbSet<FilmeGenero> ElencoGenero{ get; set; }
+        public DbSet<Genero> Genero{ get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer("Data source=(localdb)\\mssqllocaldb;Inicial Catalog=SiteDeFilmes;Integrated Security=true");
         }
