@@ -22,7 +22,7 @@ namespace SiteDeFilmes.Data
     protected override void OnModelCreating(ModelBuilder modelBuilder) 
     {
         modelBuilder.Entity<Atores>(a => {
-            a.ToTable("Atores"); //Nome da tablema
+            a.ToTable("Atores"); //Nome da tabela
             a.HasKey(a => a.Id);  //chave primaria
             a.Property(a => a.PrimeiroNome);
             a.Property(a => a.UltimoNome);
