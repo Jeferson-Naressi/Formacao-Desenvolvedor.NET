@@ -23,15 +23,16 @@ namespace SiteDeFilmes.Data
     {
         modelBuilder.Entity<Atores>(a => {
             a.ToTable("Atores"); //Nome da tabela
-            a.HasKey(a => a.Id);  //chave primaria
-            a.Property(a => a.PrimeiroNome);
+            a.HasKey(a => a.Id);  //Chave primaria
+            a.Property(a => a.PrimeiroNome);//Especifica a propriedade que deseja configurar
             a.Property(a => a.UltimoNome);
             a.Property(a => a.Genero);
             
-            a.HasMany(a => a.ElencoFilmes)
-            .WithOne(x => x.Ator)
-            .HasForeignKey(x => x.IdAtor);
+            a.HasMany(a => a.ElencoFilmes) //Representa a relação de um para muitos.
+            .WithOne(x => x.Ator) //Indica a relação de muitos para um
+            .HasForeignKey(x => x.IdAtor); //Chave estrangeira
         } );
+        
         modelBuilder.Entity<Filmes>(f => {
             f.ToTable("Filmes");
             f.Haskey(f => f.Id);
@@ -43,6 +44,7 @@ namespace SiteDeFilmes.Data
             .WithOne(x => x.Filmes)
             .HasForeignKey(x => x.IdFilmes);
         } );
+        
         modelBuilder.Entity<Generos>(g => {
             g.ToTable("Genero");
             g.Haskey(g => g.Id);
@@ -52,6 +54,7 @@ namespace SiteDeFilmes.Data
             .WithOne(x => x.Genero)
             .HasForeignKey(x => x.IdGenero);
         } );
+        
         modelBuilder.Entity<ElencoFilme>(e => {
             e.ToTable("ElencoFilme");
             e.Haskey(e => e.Id);
@@ -63,15 +66,14 @@ namespace SiteDeFilmes.Data
             e.HasMany(e =>:e.Filmes)
             .WithOne(x => x.ElencoFilme)
             .HasForeignKey(x => x.IdFilmes);
-          
-            
         } );
+        
         modelBuilder.Entity<FilmesGenero>(g => {
             g.ToTable("FilmesGenero");
             g.Haskey(g => g.Id);
                   
-            g.HasOne(g => g.FilmesGenero)
-            .WithOne(e => e.Genero)
+            g.HasOne(g => g.Filmes)
+            .WithOne(e => e.)
             .HasForeignKey(e => e.IdGenero);
         } );
 
