@@ -59,7 +59,7 @@ namespace SiteDeFilmes.Data
             ef.ToTable("ElencoFilme");
             ef.Haskey(ef => ef.Id);
                   
-            e.HasMany(ef => ef.Ator)
+            ef.HasMany(ef => ef.Ator)
             .WithOne(x => x.ElencoFilmes)
             .HasForeignKey(x => x.IdAtor);
             
@@ -76,7 +76,7 @@ namespace SiteDeFilmes.Data
             .WithOne(x => x.FilmeGenero)
             .HasForeignKey(x => x.IdGenero);
             
-            g.HasOne(g = 
+            fg.HasOne(fg = 
         } );
 
     }
