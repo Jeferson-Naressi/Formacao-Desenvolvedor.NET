@@ -76,7 +76,9 @@ namespace SiteDeFilmes.Data
             .WithOne(x => x.FilmeGenero)
             .HasForeignKey(x => x.IdGenero);
             
-            fg.HasOne(fg = 
+            fg.HasOne(fg => fg.Filmes)
+            .WithOne(ef => ef.ElencoFilme)
+            .HasForeignKey(ef => ef.IdFilmes)
         } );
 
     }
