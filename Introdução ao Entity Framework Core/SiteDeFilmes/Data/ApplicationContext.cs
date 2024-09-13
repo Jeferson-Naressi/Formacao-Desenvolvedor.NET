@@ -56,25 +56,27 @@ namespace SiteDeFilmes.Data
         } );
         
         modelBuilder.Entity<ElencoFilme>(e => {
-            e.ToTable("ElencoFilme");
-            e.Haskey(e => e.Id);
+            ef.ToTable("ElencoFilme");
+            ef.Haskey(ef => ef.Id);
                   
-            e.HasMany(e => e.Ator)
+            e.HasMany(ef => ef.Ator)
             .WithOne(x => x.ElencoFilmes)
             .HasForeignKey(x => x.IdAtor);
             
-            e.HasMany(e =>:e.Filmes)
+            ef.HasMany(ef =>:ef.Filmes)
             .WithOne(x => x.ElencoFilme)
             .HasForeignKey(x => x.IdFilmes);
         } );
         
         modelBuilder.Entity<FilmesGenero>(g => {
-            g.ToTable("FilmesGenero");
-            g.Haskey(g => g.Id);
+            fg.ToTable("FilmesGenero");
+            fg.Haskey(fg => fg.Id);
                   
-            g.HasOne(g => g.Filmes)
-            .WithOne(e => e.)
-            .HasForeignKey(e => e.IdGenero);
+            fg.HasOne(fg => fg.Genero)
+            .WithOne(x => x.FilmeGenero)
+            .HasForeignKey(x => x.IdGenero);
+            
+            g.HasOne(g = 
         } );
 
     }
