@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj": {}
+    "C:\\Users\\Jeferson\\Documents\\Jeferson\\Formacao-Desenvolvedor.NET\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj": {
+    "C:\\Users\\Jeferson\\Documents\\Jeferson\\Formacao-Desenvolvedor.NET\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
+        "projectUniqueName": "C:\\Users\\Jeferson\\Documents\\Jeferson\\Formacao-Desenvolvedor.NET\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
         "projectName": "SiteDeFilmes",
-        "projectPath": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
+        "projectPath": "C:\\Users\\Jeferson\\Documents\\Jeferson\\Formacao-Desenvolvedor.NET\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
         "packagesPath": "C:\\Users\\Jeferson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\obj\\",
+        "outputPath": "C:\\Users\\Jeferson\\Documents\\Jeferson\\Formacao-Desenvolvedor.NET\\Introdução ao Entity Framework Core\\SiteDeFilmes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "J:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

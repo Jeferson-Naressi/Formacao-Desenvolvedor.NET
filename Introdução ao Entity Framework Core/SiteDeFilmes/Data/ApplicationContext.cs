@@ -9,79 +9,87 @@ namespace SiteDeFilmes.Data
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Atores> Atores{ get; set; }
-        public DbSet<Filmes> Filmes{ get; set; }
-        public DbSet<ElencoFilmes> ElencoFilmes{ get; set; }
-        public DbSet<FilmesGenero> ElencoGenero{ get; set; }
-        public DbSet<Genero> Genero{ get; set; }
+        public DbSet<Atores> Atores { get; set; }
+        public DbSet<Filmes> Filmes { get; set; }
+        public DbSet<ElencoFilmes> ElencoFilmes { get; set; }
+        public DbSet<FilmesGeneros> FilmesGeneros { get; set; }
+        public DbSet<Generos> Generos { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlServer("Data source=(localdb)\\mssqllocaldb;Inicial Catalog=SiteDeFilmes;Integrated Security=true");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Data source=(localdb)\\mssqllocaldb;Initial Catalog=SiteDeFilmes;Integrated Security=true");
         }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) 
-    {
-        modelBuilder.Entity<Atores>(a => {
-            a.ToTable("Atores"); //Nome da tabela
-            a.HasKey(a => a.Id);  //Chave primaria
-            a.Property(a => a.PrimeiroNome);//Especifica a propriedade que deseja configurar
-            a.Property(a => a.UltimoNome);
-            a.Property(a => a.Genero);
-            
-            a.HasMany(a => a.ElencoFilmes) //Representa a relação de um para muitos.
-            .WithOne(x => x.Ator) //Indica a relação de muitos para um
-            .HasForeignKey(x => x.IdAtor); //Chave estrangeira
-        } );
-        
-        modelBuilder.Entity<Filmes>(f => {
-            f.ToTable("Filmes");
-            f.Haskey(f => f.Id);
-            f.Property(f => f.Nome);
-            f.Property(f => f.Ano);
-            f.Property(f => f.duracao);
-                  
-            f.HasMany(f => f.ElencoFilmes)
-            .WithOne(x => x.Filmes)
-            .HasForeignKey(x => x.IdFilmes);
-        } );
-        
-        modelBuilder.Entity<Generos>(g => {
-            g.ToTable("Genero");
-            g.Haskey(g => g.Id);
-            g.Property(g => g.Genero);
-                  
-            g.HasMany(g => g.FilmesGenero)
-            .WithOne(x => x.Genero)
-            .HasForeignKey(x => x.IdGenero);
-        } );
-        
-        modelBuilder.Entity<ElencoFilme>(e => {
-            ef.ToTable("ElencoFilme");
-            ef.Haskey(ef => ef.Id);
-                  
-            ef.HasMany(ef => ef.Ator)
-            .WithOne(x => x.ElencoFilmes)
-            .HasForeignKey(x => x.IdAtor);
-            
-            ef.HasMany(ef =>:ef.Filmes)
-            .WithOne(x => x.ElencoFilme)
-            .HasForeignKey(x => x.IdFilmes);
-        } );
-        
-        modelBuilder.Entity<FilmesGenero>(g => {
-            fg.ToTable("FilmesGenero");
-            fg.Haskey(fg => fg.Id);
-                  
-            fg.HasOne(fg => fg.Genero)
-            .WithOne(x => x.FilmeGenero)
-            .HasForeignKey(x => x.IdGenero);
-            
-            fg.HasOne(fg => fg.Filmes)
-            .WithOne(ef => ef.ElencoFilme)
-            .HasForeignKey(ef => ef.IdFilmes)
-        } );
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Atores>(a =>
+            {
+                a.ToTable("Atores"); // Nome da tabela
+                a.HasKey(a => a.Id); // Chave primária
+                a.Property(a => a.PrimeiroNome);
+                a.Property(a => a.UltimoNome);
+                a.Property(a => a.Genero);
 
-    }
+                a.HasMany(a => a.ElencoFilmes) // Relação um para muitos
+                    .WithOne(e => e.Atores) // Relação muitos para um
+                    .HasForeignKey(e => e.IdAtor); // Chave estrangeira
+            });
 
+            modelBuilder.Entity<Filmes>(f =>
+            {
+                f.ToTable("Filmes");
+                f.HasKey(f => f.Id);
+                f.Property(f => f.Nome);
+                f.Property(f => f.Ano);
+                f.Property(f => f.Duracao);
+
+                f.HasMany(f => f.ElencoFilmes)
+                .WithOne(e => e.Filme)
+                .HasForeignKey(e => e.IdFilmes);
+                
+                f.HasMany(f => f.FilmesGeneros)
+                .WithOne(fg => fg.Filme)
+                .HasForeignKey(fg => fg.IdFilmes);
+            });
+
+            modelBuilder.Entity<Generos>(g =>
+            {
+                g.ToTable("Generos");
+                g.HasKey(g => g.Id);
+                g.Property(g => g.Genero);
+
+                g.HasMany(g => g.FilmesGeneros)
+                .WithOne(fg => fg.Genero)
+                .HasForeignKey(fg => fg.IdGenero);
+            });
+
+            modelBuilder.Entity<ElencoFilmes>(e =>
+            {
+                e.ToTable("ElencoFilmes");
+                e.HasKey(e => e.Id);
+
+                e.HasOne(e => e.Atores)
+                .WithMany(a => a.ElencoFilmes)
+                .HasForeignKey(e => e.IdAtor);
+                
+                e.HasOne(e => e.Filme)
+                .WithMany(f => f.ElencoFilmes)
+                .HasForeignKey(e => e.IdFilmes);
+            });
+
+            modelBuilder.Entity<FilmesGeneros>(fg =>
+            {
+                fg.ToTable("FilmesGeneros");
+                fg.HasKey(fg => fg.Id);
+
+                fg.HasOne(fg => fg.Genero)
+                .WithMany(g => g.FilmesGeneros)
+                .HasForeignKey(fg => fg.IdGenero);
+                
+                fg.HasOne(fg => fg.Filme)
+                .WithMany(f => f.FilmesGeneros)
+                .HasForeignKey(fg => fg.IdFilmes);
+            });
+        }
     }
 }

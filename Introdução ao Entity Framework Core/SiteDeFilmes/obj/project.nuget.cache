@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JC1N5tQk8T8=",
+  "dgSpecHash": "H8W94xDmRyo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
+  "projectFilePath": "C:\\Users\\Jeferson\\Documents\\Jeferson\\Formacao-Desenvolvedor.NET\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jeferson\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Jeferson\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

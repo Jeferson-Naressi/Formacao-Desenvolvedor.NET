@@ -11,9 +11,9 @@ namespace SiteDeFilmes.Models
         public string Nome { get; set;}
         public int Ano { get; set;}
         public int Duracao { get; set;}
-        public ICollection<ElencoFilme> ElencoFilmes{ get; set; }
+        public ICollection<ElencoFilmes> ElencoFilmes{ get; set; }
 
-        public ICollection<FilmesGenero> FilmesGeneros{ get; set; }
+        public ICollection<FilmesGeneros> FilmesGeneros{ get; set; }
 
 
     }

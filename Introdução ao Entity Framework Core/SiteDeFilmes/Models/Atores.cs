@@ -12,9 +12,9 @@ namespace SiteDeFilmes.Models
         public string PrimeiroNome { get; set; }
         public string UltimoNome { get; set; }
 
-        public string Geneno { get; set;}
+        public string Genero { get; set;}
 
-        public ICollection<ElencoFilme> ElencoFilmes{ get; set; }
+        public ICollection<ElencoFilmes> ElencoFilmes{ get; set; }
 
     }
 }
