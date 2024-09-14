@@ -26,8 +26,8 @@ namespace SiteDeFilmes.Data
             {
                 a.ToTable("Atores"); // Nome da tabela
                 a.HasKey(a => a.Id); // Chave primária
-                a.Property(a => a.PrimeiroNome).HasColumnType("VARCHAR(20)").IsRequired();
-                a.Property(a => a.UltimoNome).HasColumnType("VARCHAR(20)");;
+                a.Property(a => a.PrimeiroNome).HasColumnType("VARCHAR(20)");
+                a.Property(a => a.UltimoNome).HasColumnType("VARCHAR(20)");
                 a.Property(a => a.Genero).HasColumnType("VARCHAR(1)");
 
                 a.HasMany(a => a.ElencoFilmes) // Relação um para muitos
@@ -39,9 +39,9 @@ namespace SiteDeFilmes.Data
             {
                 f.ToTable("Filmes");
                 f.HasKey(f => f.Id);
-                f.Property(f => f.Nome);
-                f.Property(f => f.Ano);
-                f.Property(f => f.Duracao);
+                f.Property(f => f.Nome).HasColumnType("VARCHAR(50)");
+                f.Property(f => f.Ano).HasConversion<int>();
+                f.Property(f => f.Duracao).HasConversion<int>();
 
                 f.HasMany(f => f.ElencoFilmes)
                 .WithOne(e => e.Filme)
@@ -56,7 +56,7 @@ namespace SiteDeFilmes.Data
             {
                 g.ToTable("Generos");
                 g.HasKey(g => g.Id);
-                g.Property(g => g.Genero);
+                g.Property(g => g.Genero).HasColumnType("VARCHAR(20)");
 
                 g.HasMany(g => g.FilmesGeneros)
                 .WithOne(fg => fg.Genero)
@@ -67,11 +67,14 @@ namespace SiteDeFilmes.Data
             {
                 e.ToTable("ElencoFilmes");
                 e.HasKey(e => e.Id);
-                e.Property(e => e.Papel);
+                e.Property(e => e.IdAtor).HasConversion<int>().IsRequired();
+                e.Property(e => e.IdFilmes).HasConversion<int>();
+                e.Property(e => e.Papel).HasColumnType("VARCHAR(30)");
+
 
                 e.HasOne(e => e.Atores)
                 .WithMany(a => a.ElencoFilmes)
-                .HasForeignKey(e => e.IdAtor).IsRequired();
+                .HasForeignKey(e => e.IdAtor);
                 
                 e.HasOne(e => e.Filme)
                 .WithMany(f => f.ElencoFilmes)
@@ -82,6 +85,8 @@ namespace SiteDeFilmes.Data
             {
                 fg.ToTable("FilmesGeneros");
                 fg.HasKey(fg => fg.Id);
+                fg.Property(fg => fg.IdGenero).HasConversion<int>();
+                fg.Property(fg => fg.IdFilmes).HasConversion<int>();
 
                 fg.HasOne(fg => fg.Genero)
                 .WithMany(g => g.FilmesGeneros)
