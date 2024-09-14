@@ -26,13 +26,13 @@ namespace SiteDeFilmes.Data
             {
                 a.ToTable("Atores"); // Nome da tabela
                 a.HasKey(a => a.Id); // Chave primária
-                a.Property(a => a.PrimeiroNome);
-                a.Property(a => a.UltimoNome);
-                a.Property(a => a.Genero);
+                a.Property(a => a.PrimeiroNome).HasColumnType("VARCHAR(20)").IsRequired();
+                a.Property(a => a.UltimoNome).HasColumnType("VARCHAR(20)");;
+                a.Property(a => a.Genero).HasColumnType("VARCHAR(1)");
 
                 a.HasMany(a => a.ElencoFilmes) // Relação um para muitos
-                    .WithOne(e => e.Atores) // Relação muitos para um
-                    .HasForeignKey(e => e.IdAtor); // Chave estrangeira
+                .WithOne(e => e.Atores) // Relação muitos para um
+                .HasForeignKey(e => e.IdAtor); // Chave estrangeira
             });
 
             modelBuilder.Entity<Filmes>(f =>
@@ -67,10 +67,11 @@ namespace SiteDeFilmes.Data
             {
                 e.ToTable("ElencoFilmes");
                 e.HasKey(e => e.Id);
+                e.Property(e => e.Papel);
 
                 e.HasOne(e => e.Atores)
                 .WithMany(a => a.ElencoFilmes)
-                .HasForeignKey(e => e.IdAtor);
+                .HasForeignKey(e => e.IdAtor).IsRequired();
                 
                 e.HasOne(e => e.Filme)
                 .WithMany(f => f.ElencoFilmes)

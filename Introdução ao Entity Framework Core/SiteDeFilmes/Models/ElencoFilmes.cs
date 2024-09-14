@@ -18,5 +18,7 @@ namespace SiteDeFilmes.Models
 
         public Filmes Filme{ get; set; } 
 
+        public string Papel { get; set; } 
+
     }
 }
