@@ -27,7 +27,7 @@ namespace SiteDeFilmes.Data
             modelBuilder.ApplyConfiguration(new ElencoFilmesConfiguration());
             modelBuilder.ApplyConfiguration(new FilmesConfiguration());
             modelBuilder.ApplyConfiguration(new FilmesGenerosConfiguration());
-            modelBuilder.ApplyConfiguration(new GeneroConfiguration());
+            modelBuilder.ApplyConfiguration(new GenerosConfiguration());
 
         }
         

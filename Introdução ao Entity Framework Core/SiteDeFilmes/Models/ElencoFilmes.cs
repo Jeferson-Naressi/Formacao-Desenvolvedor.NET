@@ -12,6 +12,7 @@ namespace SiteDeFilmes.Models
         public int Id { get; set; }
 
         public int IdAtor { get; set; }
+        
         public Atores Atores { get; set; }
         
         public int IdFilmes { get; set; }

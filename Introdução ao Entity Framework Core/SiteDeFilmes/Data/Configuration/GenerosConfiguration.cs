@@ -8,7 +8,7 @@ using SiteDeFilmes.Models;
 
 namespace SiteDeFilmes.Data.Configuration
 {
-    public class GeneroConfiguration : IEntityTypeConfiguration<Generos>
+    public class GenerosConfiguration : IEntityTypeConfiguration<Generos>
     {
         public void Configure(EntityTypeBuilder<Generos> builder)
         {
