@@ -4,88 +4,37 @@ Console.WriteLine("Hello, World!");
 
 class Program
 {
-    {
-        // Adiciona um ator
-        var ator = AdicionarAtor("Jeferson", "Naressi", "Masculino");
+    (var context = new AppDbContext())
 
-        // Adiciona um filme
-        var filme = AdicionarFilme("Filme Exemplo", 2023, 120);
+    // Adicionar gêneros de filmes
+    var generoAcao = new Generos { Genero = "Ação" };
+    var generoComedia = new Generos { Genero = "Comédia" };
+    context.Generos.AddRange(generoAcao, generoComedia);
+    context.SaveChanges();
 
-        // Adiciona gêneros e associa ao filme
-        var generos = new List<string> { "Ação", "Aventura" };
-        AdicionarFilmeComGeneros(filme.Nome, filme.Ano, filme.Duracao, generos);
+    // Adicionar atores
+    var ator1 = new Atores { PrimeiroNome = "Leonardo", UltimoNome = "DiCaprio", Genero = "Masculino" };
+    var ator2 = new Atores { PrimeiroNome = "Meryl", UltimoNome = "Streep", Genero = "Feminino" };
+    context.Atores.AddRange(ator1, ator2);
+    context.SaveChanges();
 
-        // Adiciona o ator ao elenco do filme
-        AdicionarElenco(ator, filme, "Protagonista");
+    // Adicionar filmes
+    var filme1 = new Filmes { Nome = "Inception", Ano = 2010, Duracao = 148 };
+    var filme2 = new Filmes { Nome = "The Devil Wears Prada", Ano = 2006, Duracao = 109 };
+    context.Filmes.AddRange(filme1, filme2);
+    context.SaveChanges();
 
-        Console.WriteLine("Registros adicionados com sucesso!");
-    }
+    // Adicionar relações de elenco
+    var elenco1 = new ElencoFilmes { IdAtor = ator1.Id, IdFilmes = filme1.Id, Papel = "Cobb" };
+    var elenco2 = new ElencoFilmes { IdAtor = ator2.Id, IdFilmes = filme2.Id, Papel = "Miranda" };
+    context.ElencoFilmes.AddRange(elenco1, elenco2);
+    context.SaveChanges();
 
-    public static Atores AdicionarAtor(string primeiroNome, string ultimoNome, string genero)
-    {
-        var ator = new Atores
-        {
-            PrimeiroNome = primeiroNome,
-            UltimoNome = ultimoNome,
-            Genero = genero
-        };
-
-        using (var context = new SeuDbContext())
-        {
-            context.Atores.Add(ator);
-            context.SaveChanges();
-        }
-        return ator;
-    }
-
-    public static Filmes AdicionarFilme(string nomeFilme, int anoFilme, int duracaoFilme)
-    {
-        var filme = new Filmes
-        {
-            Nome = nomeFilme,
-            Ano = anoFilme,
-            Duracao = duracaoFilme
-        };
-
-        using (var context = new SeuDbContext())
-        {
-            context.Filmes.Add(filme);
-            context.SaveChanges();
-        }
-        return filme;
-    }
-
-    public static void AdicionarFilmeComGeneros(string nomeFilme, int anoFilme, int duracaoFilme, List<string> generosFilme)
-    {
-        var filme = AdicionarFilme(nomeFilme, anoFilme, duracaoFilme);
-
-        using (var context = new SeuDbContext())
-        {
-            foreach (var nomeGenero in generosFilme)
-            {
-                var genero = new Generos { Genero = nomeGenero };
-                context.Generos.Add(genero);
-                context.FilmesGeneros.Add(new FilmesGeneros { Filme = filme, Genero = genero });
-            }
-            context.SaveChanges();
-        }
-    }
-
-    public static ElencoFilmes AdicionarElenco(Atores ator, Filmes filme, string papel)
-    {
-        var elenco = new ElencoFilmes
-        {
-            Atores = ator,
-            Filme = filme,
-            Papel = papel
-        };
-
-        using (var context = new SeuDbContext())
-        {
-            context.ElencoFilmes.Add(elenco);
-            context.SaveChanges();
-        }
-        return elenco;
-    }
+    // Associar gêneros aos filmes
+    var filmeGenero1 = new FilmesGeneros { IdFilmes = filme1.Id, IdGenero = generoAcao.Id };
+    var filmeGenero2 = new FilmesGeneros { IdFilmes = filme2.Id, IdGenero = generoComedia.Id };
+    context.FilmesGeneros.AddRange(filmeGenero1, filmeGenero2);
+    context.SaveChanges();
 }
-
+}
+}
