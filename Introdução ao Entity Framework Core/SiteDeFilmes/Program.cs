@@ -2,79 +2,90 @@
 Console.WriteLine("Hello, World!");
 
 
-protected override void OnModelCreating(ModelBuilder modelBuilder)
+class Program
 {
-    modelBuilder.Entity<Atores>().HasData(
-        new Atores { Id = 1, PrimeiroNome = "Ator", UltimoNome = "Um", Genero = "Masculino" },
-        new Atores { Id = 2, PrimeiroNome = "Ator", UltimoNome = "Dois", Genero = "Masculino" }
-    );
-
-    modelBuilder.Entity<Generos>().HasData(
-        new Generos { Id = 1, Genero = "Ação" },
-        new Generos { Id = 2, Genero = "Aventura" }
-    );
-
-    modelBuilder.Entity<Filmes>().HasData(
-        new Filmes { Id = 1, Nome = "Filme Exemplo", Ano = 2023, Duracao = 120 }
-    );
-
-    modelBuilder.Entity<ElencoFilmes>().HasData(
-        new ElencoFilmes { Id = 1, IdAtor = 1, IdFilmes = 1, Papel = "Protagonista" },
-        new ElencoFilmes { Id = 2, IdAtor = 2, IdFilmes = 1, Papel = "Secundário" }
-    );
-
-    modelBuilder.Entity<FilmesGeneros>().HasData(
-        new FilmesGeneros { Id = 1, IdGenero = 1, IdFilmes = 1 },
-        new FilmesGeneros { Id = 2, IdGenero = 2, IdFilmes = 1 }
-    );
-}
-
-
-
-
-public void AdicionarRegistro(
-    string primeiroNomeAtor,
-    string ultimoNomeAtor,
-    string generoAtor,
-    string nomeFilme,
-    int anoFilme,
-    int duracaoFilme,
-    string papelAtor,
-    List<string> generosFilme)
-{
-    using (var context = new SeuDbContext())
     {
-        // Criar ator
+        // Adiciona um ator
+        var ator = AdicionarAtor("Jeferson", "Naressi", "Masculino");
+
+        // Adiciona um filme
+        var filme = AdicionarFilme("Filme Exemplo", 2023, 120);
+
+        // Adiciona gêneros e associa ao filme
+        var generos = new List<string> { "Ação", "Aventura" };
+        AdicionarFilmeComGeneros(filme.Nome, filme.Ano, filme.Duracao, generos);
+
+        // Adiciona o ator ao elenco do filme
+        AdicionarElenco(ator, filme, "Protagonista");
+
+        Console.WriteLine("Registros adicionados com sucesso!");
+    }
+
+    public static Atores AdicionarAtor(string primeiroNome, string ultimoNome, string genero)
+    {
         var ator = new Atores
         {
-            PrimeiroNome = primeiroNomeAtor,
-            UltimoNome = ultimoNomeAtor,
-            Genero = generoAtor
+            PrimeiroNome = primeiroNome,
+            UltimoNome = ultimoNome,
+            Genero = genero
         };
 
-        // Criar filme
+        using (var context = new SeuDbContext())
+        {
+            context.Atores.Add(ator);
+            context.SaveChanges();
+        }
+        return ator;
+    }
+
+    public static Filmes AdicionarFilme(string nomeFilme, int anoFilme, int duracaoFilme)
+    {
         var filme = new Filmes
         {
             Nome = nomeFilme,
             Ano = anoFilme,
-            Duracao = duracaoFilme,
-            ElencoFilmes = new List<ElencoFilmes>
-            {
-                new ElencoFilmes { Atores = ator, Papel = papelAtor }
-            },
-            FilmesGeneros = new List<FilmesGeneros>()
+            Duracao = duracaoFilme
         };
 
-        // Criar gêneros e relacioná-los ao filme
-        foreach (var nomeGenero in generosFilme)
+        using (var context = new SeuDbContext())
         {
-            var genero = new Generos { Genero = nomeGenero };
-            filme.FilmesGeneros.Add(new FilmesGeneros { Genero = genero });
+            context.Filmes.Add(filme);
+            context.SaveChanges();
         }
+        return filme;
+    }
 
-        // Adicionar todos ao contexto
-        context.Atores.Add(ator);
-        context.Filmes.Add(filme);
-        context.SaveChanges();
+    public static void AdicionarFilmeComGeneros(string nomeFilme, int anoFilme, int duracaoFilme, List<string> generosFilme)
+    {
+        var filme = AdicionarFilme(nomeFilme, anoFilme, duracaoFilme);
+
+        using (var context = new SeuDbContext())
+        {
+            foreach (var nomeGenero in generosFilme)
+            {
+                var genero = new Generos { Genero = nomeGenero };
+                context.Generos.Add(genero);
+                context.FilmesGeneros.Add(new FilmesGeneros { Filme = filme, Genero = genero });
+            }
+            context.SaveChanges();
+        }
+    }
+
+    public static ElencoFilmes AdicionarElenco(Atores ator, Filmes filme, string papel)
+    {
+        var elenco = new ElencoFilmes
+        {
+            Atores = ator,
+            Filme = filme,
+            Papel = papel
+        };
+
+        using (var context = new SeuDbContext())
+        {
+            context.ElencoFilmes.Add(elenco);
+            context.SaveChanges();
+        }
+        return elenco;
     }
 }
+
