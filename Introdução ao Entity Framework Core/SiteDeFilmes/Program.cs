@@ -4,25 +4,32 @@ Console.WriteLine("Hello, World!");
 
 class Program
 {
-    (var context = new AppDbContext())
 
-    // Adicionar gêneros de filmes
-    var generoAcao = new Generos { Genero = "Ação" };
-    var generoComedia = new Generos { Genero = "Comédia" };
-    context.Generos.AddRange(generoAcao, generoComedia);
-    context.SaveChanges();
+public static Atores AdicionarAtor(string primeiroNome, string ultimoNome, string genero)
+{
+    var ator = new Atores
+    {
+        PrimeiroNome = primeiroNome,
+        UltimoNome = ultimoNome,
+        Genero = genero
+    };
+    
+    return Adicionar(ator);
+}
 
-    // Adicionar atores
-    var ator1 = new Atores { PrimeiroNome = "Leonardo", UltimoNome = "DiCaprio", Genero = "Masculino" };
-    var ator2 = new Atores { PrimeiroNome = "Meryl", UltimoNome = "Streep", Genero = "Feminino" };
-    context.Atores.AddRange(ator1, ator2);
-    context.SaveChanges();
+public static Filmes AdicionarFilme(string nomeFilme, int anoFilme, int duracaoFilme)
+{
+    var filme = new Filmes
+    {
+        Nome = nomeFilme,
+        Ano = anoFilme,
+        Duracao = duracaoFilme
+    };
+    
+    return Adicionar(filme);
+}
 
-    // Adicionar filmes
-    var filme1 = new Filmes { Nome = "Inception", Ano = 2010, Duracao = 148 };
-    var filme2 = new Filmes { Nome = "The Devil Wears Prada", Ano = 2006, Duracao = 109 };
-    context.Filmes.AddRange(filme1, filme2);
-    context.SaveChanges();
+
 
     // Adicionar relações de elenco
     var elenco1 = new ElencoFilmes { IdAtor = ator1.Id, IdFilmes = filme1.Id, Papel = "Cobb" };
