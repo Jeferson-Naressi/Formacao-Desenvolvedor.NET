@@ -53,3 +53,14 @@ public static T Adicionar<T>(T entidade) where T : class
 }
 }
 }
+
+// Supondo que a classe Atores já está definida
+var novoAtor = new Atores
+{
+    PrimeiroNome = "Jeferson",
+    UltimoNome = "Naressi",
+    Genero = "Masculino"
+};
+
+// Chamada do método genérico para adicionar o ator
+novoAtor = Adicionar(novoAtor);
