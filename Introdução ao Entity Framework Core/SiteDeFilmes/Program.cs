@@ -51,3 +51,4 @@ var novoAtor = new Atores
 
 // Chamada do método genérico para adicionar o ator
 novoAtor = Adicionar(novoAtor);
+}
