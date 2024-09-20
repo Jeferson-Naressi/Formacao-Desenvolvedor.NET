@@ -33,7 +33,8 @@ public static T Adicionar<T>(T entidade) where T : class
 {
     using (var context = new SeuDbContext())
     {
-       
+        context.Set<T>().Add(entidade);
+        context.SaveChanges();
     }
     return entidade;
 }
