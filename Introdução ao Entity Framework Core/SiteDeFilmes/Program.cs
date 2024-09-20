@@ -29,7 +29,14 @@ public static Filmes AdicionarFilme(string nomeFilme, int anoFilme, int duracaoF
     return Adicionar(filme);
 }
 
-
+public static T Adicionar<T>(T entidade) where T : class
+{
+    using (var context = new SeuDbContext())
+    {
+       
+    }
+    return entidade;
+}
 
     // Adicionar relações de elenco
     var elenco1 = new ElencoFilmes { IdAtor = ator1.Id, IdFilmes = filme1.Id, Papel = "Cobb" };
