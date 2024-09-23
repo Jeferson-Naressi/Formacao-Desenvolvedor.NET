@@ -1,7 +1,7 @@
 # 1: Título
 ## Sistema de Gerenciamento de Filmes
 
-Uma solução completa para cadastro e consulta de filmes, atores e gêneros.
+<i>Uma solução completa para cadastro e consulta de filmes, atores e gêneros.</i>
 
 # 2: Objetivos do Sistema
 <li><b>Gerenciar</b> informações sobre filmes, atores e gêneros.</li>
