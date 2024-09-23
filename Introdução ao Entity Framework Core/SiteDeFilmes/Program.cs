@@ -55,7 +55,7 @@ private static void AdicionarElenco(int idAtor, int idFilme, string papel)
     {
         IdAtor = idAtor,
         IdFilmes = idFilme,
-        Papel = papel
+        Papel = "Papel"
     };
 
     db.ElencoFilmes.Add(novoElenco);
@@ -78,4 +78,122 @@ private static void AssociarFilmeGenero(int idFilme, int idGenero)
     db.SaveChanges();
 
     Console.WriteLine("Filme e gênero associados com sucesso!");
+}
+private static void ConsultarFilmePorId(int id)
+{
+    using var db = new Data.ApplicationContext();
+
+    var filme = db.Filmes.Find(id); // Busca pelo ID
+
+    if (filme != null)
+    {
+        Console.WriteLine($"Filme encontrado: {filme.Nome}, Ano: {filme.Ano}, Duração: {filme.Duracao}");
+    }
+    else
+    {
+        Console.WriteLine("Filme não encontrado.");
+    }
+}
+
+private static void ConsultarFilmePorNome(string nome)
+{
+    using var db = new Data.ApplicationContext();
+
+    var filme = db.Filmes.FirstOrDefault(f => f.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase)); // Busca pelo nome
+
+    if (filme != null)
+    {
+        Console.WriteLine($"Filme encontrado: {filme.Nome}, Ano: {filme.Ano}, Duração: {filme.Duracao}");
+    }
+    else
+    {
+        Console.WriteLine("Filme não encontrado.");
+    }
+}
+private static void ConsultarAtorPorId(int id)
+{
+    using var db = new Data.ApplicationContext();
+
+    var ator = db.Atores.Find(id); // Busca pelo ID
+
+    if (ator != null)
+    {
+        Console.WriteLine($"Ator encontrado: {ator.PrimeiroNome} {ator.UltimoNome}, Gênero: {ator.Genero}");
+    }
+    else
+    {
+        Console.WriteLine("Ator não encontrado.");
+    }
+}
+
+private static void ConsultarAtorPorNome(string primeiroNome, string ultimoNome)
+{
+    using var db = new Data.ApplicationContext();
+
+    var ator = db.Atores.FirstOrDefault(a => 
+        a.PrimeiroNome.Equals(primeiroNome, StringComparison.OrdinalIgnoreCase) && 
+        a.UltimoNome.Equals(ultimoNome, StringComparison.OrdinalIgnoreCase));
+
+    if (ator != null)
+    {
+        Console.WriteLine($"Ator encontrado: {ator.PrimeiroNome} {ator.UltimoNome}, Gênero: {ator.Genero}");
+    }
+    else
+    {
+        Console.WriteLine("Ator não encontrado.");
+    }
+}
+
+private static void ConsultarGeneroPorId(int id)
+{
+    using var db = new Data.ApplicationContext();
+
+    var genero = db.Generos.Find(id); // Busca pelo ID
+
+    if (genero != null)
+    {
+        Console.WriteLine($"Gênero encontrado: {genero.Genero}");
+    }
+    else
+    {
+        Console.WriteLine("Gênero não encontrado.");
+    }
+}
+
+private static void ConsultarElencoPorFilmeId(int idFilme)
+{
+    using var db = new Data.ApplicationContext();
+
+    var elenco = db.ElencoFilmes.Where(e => e.IdFilmes == idFilme).ToList();
+
+    if (elenco.Any())
+    {
+        foreach (var item in elenco)
+        {
+            Console.WriteLine($"Ator ID: {item.IdAtor}, Papel: {item.Papel}");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Nenhum elenco encontrado para este filme.");
+    }
+}
+private static void ConsultarFilmesPorGeneroId(int idGenero)
+{
+    using var db = new Data.ApplicationContext();
+
+    var filmesGeneros = db.FilmesGeneros.Where(fg => fg.IdGenero == idGenero).ToList();
+
+    if (filmesGeneros.Any())
+    {
+        foreach (var item in filmesGeneros)
+        {
+            var filme = db.Filmes.Find(item.IdFilmes);
+            Console.WriteLine($"Filme ID: {filme.Id}, Nome: {filme.Nome}, Ano: {filme.Ano}, Duração: {filme.Duracao}");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Nenhum filme encontrado para este gênero.");
+    }
 }
