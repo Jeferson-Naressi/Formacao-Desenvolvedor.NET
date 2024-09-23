@@ -36,3 +36,14 @@ using (var context = new FilmeContext())
     );
     context.SaveChanges();
 }
+private static void ConsultarDados()
+{
+    using var db = new Data.ApplicationContext();
+    //var consultarPorSintaxe = (from c in db.filmes where c.Id>0 select c).ToList();
+    var ConsultaPorMetodo = db.Filmes.Where(p =>p.Id >0).ToList();
+    foreach(var Filmes in ConsultaPorMetodo)
+    {
+        db.Filmes.Find(Filme.Id) //Find consulta primeiro em memoria caso não encontre procura no bd
+    }
+    
+}
