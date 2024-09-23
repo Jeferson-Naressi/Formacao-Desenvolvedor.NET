@@ -2,53 +2,37 @@
 Console.WriteLine("Hello, World!");
 
 
-class Program
+using (var context = new FilmeContext())
 {
+    // Adicionando Gêneros
+    var acao = new Generos { Genero = "Ação" };
+    var comedia = new Generos { Genero = "Comédia" };
+    context.Generos.AddRange(acao, comedia);
+    context.SaveChanges();
 
-public static Atores AdicionarAtor(string primeiroNome, string ultimoNome, string genero)
-{
-    var ator = new Atores
-    {
-        PrimeiroNome = primeiroNome,
-        UltimoNome = ultimoNome,
-        Genero = genero
-    };
-    
-    return Adicionar(ator);
-}
+    // Adicionando Atores
+    var ator1 = new Atores { PrimeiroNome = "Jeferson", UltimoNome = "Naressi", Genero = "Masculino" };
+    var ator2 = new Atores { PrimeiroNome = "Jane", UltimoNome = "Lys", Genero = "Feminino" };
+    context.Atores.AddRange(ator1, ator2);
+    context.SaveChanges();
 
-public static Filmes AdicionarFilme(string nomeFilme, int anoFilme, int duracaoFilme)
-{
-    var filme = new Filmes
-    {
-        Nome = nomeFilme,
-        Ano = anoFilme,
-        Duracao = duracaoFilme
-    };
-    
-    return Adicionar(filme);
-}
+    // Adicionando Filmes
+    var filme1 = new Filmes { Nome = "Aventura Incrível", Ano = 2022, Duracao = 120 };
+    var filme2 = new Filmes { Nome = "Riso Garantido", Ano = 2023, Duracao = 90 };
+    context.Filmes.AddRange(filme1, filme2);
+    context.SaveChanges();
 
-public static T Adicionar<T>(T entidade) where T : class
-{
-    using (var context = new SeuDbContext())
-    {
-        context.Set<T>().Add(entidade);
-        context.SaveChanges();
-    }
-    return entidade;
-}
+    // Adicionando Elenco
+    context.ElencoFilmes.AddRange(
+        new ElencoFilmes { IdAtor = ator1.Id, IdFilmes = filme1.Id, Papel = "Heroi" },
+        new ElencoFilmes { IdAtor = ator2.Id, IdFilmes = filme2.Id, Papel = "Protagonista" }
+    );
+    context.SaveChanges();
 
-
-
-// Supondo que a classe Atores já está definida
-var novoAtor = new Atores
-{
-    PrimeiroNome = "Jeferson",
-    UltimoNome = "Naressi",
-    Genero = "Masculino"
-};
-
-// Chamada do método genérico para adicionar o ator
-novoAtor = Adicionar(novoAtor);
+    // Associando Filmes e Gêneros
+    context.FilmesGeneros.AddRange(
+        new FilmesGeneros { IdFilmes = filme1.Id, IdGenero = acao.Id },
+        new FilmesGeneros { IdFilmes = filme2.Id, IdGenero = comedia.Id }
+    );
+    context.SaveChanges();
 }
