@@ -1,4 +1,4 @@
-# 1: Título
+# 1: Aplicação de Gerenciamento de Filmes: Estrutura e Funcionalidades
 ## Sistema de Gerenciamento de Filmes
 
 <i>Uma solução completa para cadastro e consulta de filmes, atores e gêneros.</i>
