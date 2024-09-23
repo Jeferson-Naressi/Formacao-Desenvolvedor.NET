@@ -1,78 +1,75 @@
-Apresentação: Modelo de Dados do Sistema de Filmes
+# 1: Título
+## Sistema de Gerenciamento de Filmes
 
-1. Introdução
-Objetivo: Apresentar o modelo de dados para o sistema de gerenciamento de filmes.
-Tecnologia: Utilizando Entity Framework Core para o mapeamento objeto-relacional (ORM) e SQL para a definição das tabelas.
+Uma solução completa para cadastro e consulta de filmes, atores e gêneros.
 
-2. Entidades e Relacionamentos
+# 2: Objetivos do Sistema
+<li><b>Gerenciar</b> informações sobre filmes, atores e gêneros.</li>
 
-2.1 Entidades
-Atores
-Descrição: Representa os atores no sistema.
-Propriedades:
-Id: Identificador único do ator.
-PrimeiroNome: Primeiro nome do ator.
-UltimoNome: Último nome do ator.
-Genero: Gênero do ator.
-Filmes
+<li><b>Facilitar</b> o acesso a dados relacionados.</li>
 
-Descrição: Representa os filmes disponíveis.
-Propriedades:
-Id: Identificador único do filme.
-Nome: Nome do filme.
-Ano: Ano de lançamento do filme.
-Duracao: Duração do filme em minutos.
-ElencoFilmes
+<li><b>Implementar</b> um repositório genérico para operações de CRUD.</li>
 
-Descrição: Representa a relação entre atores e filmes.
-Propriedades:
-Id: Identificador único da relação.
-IdAtor: Chave estrangeira referenciando o ator.
-IdFilmes: Chave estrangeira referenciando o filme.
-FilmesGenero
+# 3: Estrutura do Banco de Dados
 
-Descrição: Representa a relação entre filmes e gêneros.
-Propriedades:
-Id: Identificador único da relação.
-IdGenero: Chave estrangeira referenciando o gênero.
-IdFilmes: Chave estrangeira referenciando o filme.
-Generos
+<li><b>Filmes</b></li>
+<ul>ID, Nome, Ano, Duração</ul>
 
-Descrição: Representa os gêneros de filmes.
-Propriedades:
-Id: Identificador único do gênero.
-Genero: Nome do gênero.
+<li><b>Atores</b></li>
+<ul>ID, Primeiro Nome, Último Nome, Gênero</ul>
 
-3. Relacionamentos
+<li><b>Gêneros</b></li>
+<ul>ID, Nome do Gênero</ul>
 
-3.1 Atores e ElencoFilmes
-Relação: Um para Muitos.
-Descrição: Um ator pode estar em vários filmes, enquanto cada filme pode ter vários atores.
+<li><b>Elenco de Filmes</b></li>
+<ul>ID, ID do Ator, ID do Filme, Papel</ul>
 
-3.2 Filmes e ElencoFilmes
-Relação: Um para Muitos.
-Descrição: Um filme pode ter vários atores, e cada ator pode estar em vários filmes.
+<li><b>Filmes e Gêneros</b></li>
+<ul>ID, ID do Filme, ID do Gênero</ul>
 
-3.3 Generos e FilmesGenero
-Relação: Um para Muitos.
-Descrição: Um gênero pode ser associado a vários filmes, e cada filme pode ter vários gêneros.
+# 4: Repositório Genérico
+<li><b>Operações de CRUD:</b></li>
+<ul>Adicionar, Consultar, Atualizar, Deletar</ul>
 
-3.4 Filmes e FilmesGenero
-Relação: Um para Muitos.
-Descrição: Um filme pode ter vários gêneros, e um gênero pode ser associado a vários filmes.
+<li><b>Flexibilidade:</b></li>
+<ul>Pode ser usado para qualquer entidade do sistema.</ul>
 
-5. Diagramas
+<li><b>Implementação:</b></li>
+<ul>Uso do Entity Framework para interação com o banco de dados.</ul>
 
-5.1 Diagrama de Entidades
-Atores —1
-— ElencoFilmes —N:1— Filmes
+# 5: Funcionalidades Principais
 
-Filmes —1
-— ElencoFilmes
+1. <b>Adicionar Atores:</b>
+<ul>Cadastro de novos atores no sistema.</ul>
 
-Generos —1
-— FilmesGenero —N:1— Filmes
+2. <b>Consultar Atores:</b>
+<ul>Listagem de todos os atores cadastrados.</ul>
 
-6. Conclusão
-Resumo: O modelo de dados permite a gestão eficiente de atores, filmes e gêneros, estabelecendo relações claras entre eles.
-Próximos Passos: Implementar as configurações no código e criar as tabelas no banco de dados. Validar o modelo com testes e ajustar conforme necessário.
+3. <b>Adicionar Filmes:</b>
+<ul>Cadastro de novos filmes.</ul>
+
+4. <b>Consultar Filmes:</b>
+<ul>Listagem de todos os filmes cadastrados.</ul>
+
+5. <b>Gerenciar Gêneros e Elencos:</b>
+<ul>Adição e consulta de gêneros e elencos.</ul>
+
+# 6: Exemplo de Uso
+
+### Exemplo de Uso
+- **Adicionar Atores**:
+  ```csharp
+  private static void AdicionarAtor() {
+      using var repo = new RepositorioGenerico<Atores>();
+      var novoAtor = new Atores { ... };
+      repo.Adicionar(novoAtor);
+      Console.WriteLine("Ator adicionado com sucesso!");
+  }
+
+# 7: Conclusão
+
+<b><li>Sistema Funcional:</b> Permite gerenciar eficientemente dados sobre filmes e atores.</li>
+
+<b><li>Escalabilidade:</b> Pode ser expandido para incluir mais funcionalidades.</li>
+
+<b><li>Próximos Passos:</b> Implementar interface gráfica ou API para interação.</li>
