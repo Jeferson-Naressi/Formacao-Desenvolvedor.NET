@@ -1,264 +1,317 @@
-static void Main(string[] args)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using SiteDeFilmes.Data;
+using SiteDeFilmes.Models;
+
+namespace SiteDeFilmes
 {
-    //AdicionarAtor();
-    //ConsultarAtores();
-
-    //AdicionarFilme();
-    //ConsultarFilmes();
-
-    //AdicionarGenero();
-    //ConsultarGeneros();
-
-    //AdicionarElencoFilme();
-    //ConsultarElencoFilmes();
-
-    //AdicionarFilmesGeneros();
-    //ConsultarFilmesGeneros();
-}
-
-public class RepositorioGenerico<T> where T : class
-{
-    private readonly Data.ApplicationContext _contextoDb; // Contexto do banco de dados
-    private readonly DbSet<T> _conjuntoDb; // Conjunto de dados da entidade T
-
-    // Construtor do repositório genérico
-    public RepositorioGenerico()
+    class Program
     {
-        _contextoDb = new Data.ApplicationContext(); // Inicializa o contexto
-        _conjuntoDb = _contextoDb.Set<T>(); // Define o conjunto de dados para a entidade T
-    }
-
-    // Método para adicionar uma nova entidade
-    public void Adicionar(T entidade)
-    {
-        _conjuntoDb.Add(entidade); // Adiciona a entidade ao conjunto
-        _contextoDb.SaveChanges(); // Salva as alterações no banco de dados
-    }
-
-    // Método para buscar uma entidade pelo ID
-    public T BuscarPorId(int id)
-    {
-        return _conjuntoDb.Find(id); // Retorna a entidade encontrada pelo ID
-    }
-
-    // Método para listar todas as entidades
-    public IEnumerable<T> ListarTodos()
-    {
-        return _conjuntoDb.ToList(); // Retorna todas as entidades como uma lista
-    }
-
-    // Método para atualizar uma entidade existente
-    public void Atualizar(T entidade)
-    {
-        _conjuntoDb.Update(entidade); // Atualiza a entidade no conjunto
-        _contextoDb.SaveChanges(); // Salva as alterações no banco de dados
-    }
-
-    // Método para deletar uma entidade pelo ID
-    public void Deletar(int id)
-    {
-        var entidade = BuscarPorId(id); // Busca a entidade pelo ID
-        if (entidade != null) // Verifica se a entidade foi encontrada
+        static void Main(string[] args)
         {
-            _conjuntoDb.Remove(entidade); // Remove a entidade do conjunto
-            _contextoDb.SaveChanges(); // Salva as alterações no banco de dados
+            // Exemplos de uso
+            AdicionarAtores(new List<Atores>
+            {
+                new Atores { PrimeiroNome = "Jeferson", UltimoNome = "Naressi", Genero = "M" },
+                new Atores { PrimeiroNome = "Lucas", UltimoNome = "Amaro", Genero = "F" }
+            });
+            //ConsultarAtores();
+
+            AdicionarFilmes(new List<Filmes>
+            {
+                new Filmes { Nome = "Eu sou a Lenda", Ano = 2023, Duracao = 120 },
+                new Filmes { Nome = "Filme2", Ano = 2022, Duracao = 90 }
+            });
+            //ConsultarFilmes();
+
+            AdicionarGeneros(new List<Generos>
+            {
+                new Generos { Genero = "Aventura" },
+                new Generos { Genero = "Gênero2" }
+            });
+            
+
+            //ConsultarGeneros();
+
+            // Exemplo de atualização
+            //AtualizarAtor(1, "NovoNome");
+            //AtualizarFilme(1, "NovoFilme");
+            //AtualizarGenero(1, "NovoGênero");
+            //AtualizarElenco(1, "NovoPapel");
+            //AtualizarFilmeGenero(1, 2);
+
+            // Exemplo de exclusão
+            //DeletarAtor(1);
+            //DeletarFilme(1);
+            //DeletarGenero(1);
+            //DeletarElenco(1);
+            //DeletarFilmeGenero(1);
+
+            // Consultas após atualizações e exclusões
+            //ConsultarAtores();
+            //ConsultarFilmes();
+            //ConsultarGeneros();
+            //ConsultarElenco();
+            //ConsultarFilmesGeneros();
+            
         }
-    }
 
-    // Método para liberar recursos
-    public void Liberar()
-    {
-        _contextoDb.Dispose(); // Libera o contexto do banco de dados
-    }
-}
+        // CRUD Atores
+        private static void AdicionarAtores(IEnumerable<Atores> atores)
+        {
+            using var context = new ApplicationContext();
+            context.Atores.AddRange(atores);
+            context.SaveChanges();
+            Console.WriteLine("Atores adicionados com sucesso!");
+        }
 
-private static void AdicionarAtor()
-{
-    using var repo = new GenericRepository<Atores>();
+        private static void ConsultarAtores()
+        {
+            using var context = new ApplicationContext();
+            var atores = context.Atores.ToList();
+            foreach (var ator in atores)
+            {
+                Console.WriteLine($"{ator.PrimeiroNome} {ator.UltimoNome}");
+            }
+        }
 
-    var novoAtor = new Atores
-    {
-        PrimeiroNome = "Nome do Ator",
-        UltimoNome = "Sobrenome do Ator",
-        Genero = "Gênero"
-    };
+        private static void AtualizarAtor(int id, string novoNome)
+        {
+            using var context = new ApplicationContext();
+            var ator = context.Atores.Find(id);
+            if (ator != null)
+            {
+                ator.PrimeiroNome = novoNome;
+                context.SaveChanges();
+                Console.WriteLine("Ator atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Ator não encontrado.");
+            }
+        }
 
-    repo.Add(novoAtor);
-    Console.WriteLine("Ator adicionado com sucesso!");
-}
+        private static void DeletarAtor(int id)
+        {
+            using var context = new ApplicationContext();
+            var ator = context.Atores.Find(id);
+            if (ator != null)
+            {
+                context.Atores.Remove(ator);
+                context.SaveChanges();
+                Console.WriteLine("Ator deletado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Ator não encontrado.");
+            }
+        }
 
-private static void AtualizarAtor(int id, string novoPrimeiroNome)
-{
-    using var repo = new GenericRepository<Atores>();
+        // CRUD Filmes
+        private static void AdicionarFilmes(IEnumerable<Filmes> filmes)
+        {
+            using var context = new ApplicationContext();
+            context.Filmes.AddRange(filmes);
+            context.SaveChanges();
+            Console.WriteLine("Filmes adicionados com sucesso!");
+        }
 
-    var ator = repo.GetById(id);
-    if (ator != null)
-    {
-        ator.PrimeiroNome = novoPrimeiroNome;
-        repo.Update(ator);
-        Console.WriteLine("Primeiro nome do ator atualizado com sucesso!");
-    }
-    else
-    {
-        Console.WriteLine("Ator não encontrado.");
-    }
-}
+        private static void ConsultarFilmes()
+        {
+            using var context = new ApplicationContext();
+            var filmes = context.Filmes.ToList();
+            foreach (var filme in filmes)
+            {
+                Console.WriteLine($"Filme: {filme.Nome}, Ano: {filme.Ano}");
+            }
+        }
 
-private static void ConsultarAtores()
-{
-    using var repo = new GenericRepository<Atores>();
+        private static void AtualizarFilme(int id, string novoNome)
+        {
+            using var context = new ApplicationContext();
+            var filme = context.Filmes.Find(id);
+            if (filme != null)
+            {
+                filme.Nome = novoNome;
+                context.SaveChanges();
+                Console.WriteLine("Filme atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Filme não encontrado.");
+            }
+        }
 
-    var atores = repo.GetAll();
-    foreach (var ator in atores)
-    {
-        Console.WriteLine($"{ator.PrimeiroNome} {ator.UltimoNome}");
-    }
-}
-private static void AdicionarFilme()
-{
-    using var repo = new GenericRepository<Filmes>();
+        private static void DeletarFilme(int id)
+        {
+            using var context = new ApplicationContext();
+            var filme = context.Filmes.Find(id);
+            if (filme != null)
+            {
+                context.Filmes.Remove(filme);
+                context.SaveChanges();
+                Console.WriteLine("Filme deletado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Filme não encontrado.");
+            }
+        }
 
-    var novoFilme = new Filmes
-    {
-        Nome = "Nome do Filme",
-        Ano = 2023,
-        Duracao = 120 // Duração em minutos
-    };
+        // CRUD Generos
+        private static void AdicionarGeneros(IEnumerable<Generos> generos)
+        {
+            using var context = new ApplicationContext();
+            context.Generos.AddRange(generos);
+            context.SaveChanges();
+            Console.WriteLine("Gêneros adicionados com sucesso!");
+        }
 
-    repo.Add(novoFilme);
-    Console.WriteLine("Filme adicionado com sucesso!");
-}
+        private static void ConsultarGeneros()
+        {
+            using var context = new ApplicationContext();
+            var generos = context.Generos.ToList();
+            foreach (var gen in generos)
+            {
+                Console.WriteLine($"Gênero: {gen.Genero}");
+            }
+        }
 
-private static void AtualizarFilme(int id, string novoNome)
-{
-    using var repo = new GenericRepository<Filmes>();
+        private static void AtualizarGenero(int id, string novoNome)
+        {
+            using var context = new ApplicationContext();
+            var genero = context.Generos.Find(id);
+            if (genero != null)
+            {
+                genero.Genero = novoNome;
+                context.SaveChanges();
+                Console.WriteLine("Gênero atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Gênero não encontrado.");
+            }
+        }
 
-    var filme = repo.GetById(id);
-    if (filme != null)
-    {
-        filme.Nome = novoNome;
-        repo.Update(filme);
-        Console.WriteLine("Filme atualizado com sucesso!");
-    }
-    else
-    {
-        Console.WriteLine("Filme não encontrado.");
-    }
-}
+        private static void DeletarGenero(int id)
+        {
+            using var context = new ApplicationContext();
+            var genero = context.Generos.Find(id);
+            if (genero != null)
+            {
+                context.Generos.Remove(genero);
+                context.SaveChanges();
+                Console.WriteLine("Gênero deletado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Gênero não encontrado.");
+            }
+        }
 
-private static void ConsultarFilmes()
-{
-    using var repo = new GenericRepository<Filmes>();
+        // CRUD ElencoFilmes
+        private static void AdicionarElencos(IEnumerable<ElencoFilmes> elencos)
+        {
+            using var context = new ApplicationContext();
+            context.ElencoFilmes.AddRange(elencos);
+            context.SaveChanges();
+            Console.WriteLine("Elencos adicionados com sucesso!");
+        }
 
-    var filmes = repo.GetAll();
-    foreach (var filme in filmes)
-    {
-        Console.WriteLine($"Filme: {filme.Nome}, Ano: {filme.Ano}");
-    }
-}
-private static void AdicionarGenero()
-{
-    using var repo = new GenericRepository<Generos>();
+        private static void ConsultarElenco()
+        {
+            using var context = new ApplicationContext();
+            var elenco = context.ElencoFilmes.ToList();
+            foreach (var item in elenco)
+            {
+                Console.WriteLine($"Ator ID: {item.IdAtor}, Filme ID: {item.IdFilmes}, Papel: {item.Papel}");
+            }
+        }
 
-    var novoGenero = new Generos
-    {
-        Genero = "Nome do Gênero"
-    };
+        private static void AtualizarElenco(int id, string novoPapel)
+        {
+            using var context = new ApplicationContext();
+            var elenco = context.ElencoFilmes.Find(id);
+            if (elenco != null)
+            {
+                elenco.Papel = novoPapel;
+                context.SaveChanges();
+                Console.WriteLine("Papel do elenco atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Elenco não encontrado.");
+            }
+        }
 
-    repo.Add(novoGenero);
-    Console.WriteLine("Gênero adicionado com sucesso!");
-}
+        private static void DeletarElenco(int id)
+        {
+            using var context = new ApplicationContext();
+            var elenco = context.ElencoFilmes.Find(id);
+            if (elenco != null)
+            {
+                context.ElencoFilmes.Remove(elenco);
+                context.SaveChanges();
+                Console.WriteLine("Elenco deletado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Elenco não encontrado.");
+            }
+        }
 
-private static void AtualizarGenero(int id, string novoNome)
-{
-    using var repo = new GenericRepository<Generos>();
+        // CRUD FilmesGeneros
+        private static void AdicionarFilmeGeneros(IEnumerable<FilmesGeneros> filmesGeneros)
+        {
+            using var context = new ApplicationContext();
+            context.FilmesGeneros.AddRange(filmesGeneros);
+            context.SaveChanges();
+            Console.WriteLine("Associações de filme e gênero adicionadas com sucesso!");
+        }
 
-    var genero = repo.GetById(id);
-    if (genero != null)
-    {
-        genero.Genero = novoNome;
-        repo.Update(genero);
-        Console.WriteLine("Gênero atualizado com sucesso!");
-    }
-    else
-    {
-        Console.WriteLine("Gênero não encontrado.");
-    }
-}
+        private static void ConsultarFilmesGeneros()
+        {
+            using var context = new ApplicationContext();
+            var filmesGeneros = context.FilmesGeneros.ToList();
+            foreach (var item in filmesGeneros)
+            {
+                Console.WriteLine($"Filme ID: {item.IdFilmes}, Gênero ID: {item.IdGenero}");
+            }
+        }
 
-private static void ConsultarGeneros()
-{
-    using var repo = new GenericRepository<Generos>();
+        private static void AtualizarFilmeGenero(int id, int novoIdGenero)
+        {
+            using var context = new ApplicationContext();
+            var filmeGenero = context.FilmesGeneros.Find(id);
+            if (filmeGenero != null)
+            {
+                filmeGenero.IdGenero = novoIdGenero; // Atualiza o gênero associado
+                context.SaveChanges();
+                Console.WriteLine("Associação de filme e gênero atualizada com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Associação não encontrada.");
+            }
+        }
 
-    var generos = repo.GetAll();
-    foreach (var genero in generos)
-    {
-        Console.WriteLine($"Gênero: {genero.Genero}");
-    }
-}
-private static void AdicionarElencoFilme()
-{
-    using var repo = new GenericRepository<ElencoFilmes>();
-
-    var novoElenco = new ElencoFilmes
-    {
-        IdAtor = 1, // ID do ator
-        IdFilmes = 1, // ID do filme
-        Papel = "Papel do Ator"
-    };
-
-    repo.Add(novoElenco);
-    Console.WriteLine("Elenco adicionado com sucesso!");
-}
-
-private static void AtualizarElencoFilme(int id, string novoPapel)
-{
-    using var repo = new GenericRepository<ElencoFilmes>();
-
-    var elenco = repo.GetById(id);
-    if (elenco != null)
-    {
-        elenco.Papel = novoPapel;
-        repo.Update(elenco);
-        Console.WriteLine("Papel do ator atualizado com sucesso!");
-    }
-    else
-    {
-        Console.WriteLine("Elenco não encontrado.");
-    }
-}
-
-private static void ConsultarElencoFilmes()
-{
-    using var repo = new GenericRepository<ElencoFilmes>();
-
-    var elenco = repo.GetAll();
-    foreach (var item in elenco)
-    {
-        Console.WriteLine($"Ator ID: {item.IdAtor}, Filme ID: {item.IdFilmes}, Papel: {item.Papel}");
-    }
-}
-private static void AdicionarFilmesGeneros()
-{
-    using var repo = new GenericRepository<FilmesGeneros>();
-
-    var novoFilmeGenero = new FilmesGeneros
-    {
-        IdFilmes = 1, // ID do filme
-        IdGenero = 1 // ID do gênero
-    };
-
-    repo.Add(novoFilmeGenero);
-    Console.WriteLine("Associação de filme e gênero adicionada com sucesso!");
-}
-
-private static void ConsultarFilmesGeneros()
-{
-    using var repo = new GenericRepository<FilmesGeneros>();
-
-    var filmesGeneros = repo.GetAll();
-    foreach (var item in filmesGeneros)
-    {
-        Console.WriteLine($"Filme ID: {item.IdFilmes}, Gênero ID: {item.IdGenero}");
+        private static void DeletarFilmeGenero(int id)
+        {
+            using var context = new ApplicationContext();
+            var filmeGenero = context.FilmesGeneros.Find(id);
+            if (filmeGenero != null)
+            {
+                context.FilmesGeneros.Remove(filmeGenero);
+                context.SaveChanges();
+                Console.WriteLine("Associação de filme e gênero deletada com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Associação não encontrada.");
+            }
+        }
     }
 }
