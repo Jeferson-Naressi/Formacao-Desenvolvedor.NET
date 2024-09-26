@@ -23,14 +23,14 @@ namespace SiteDeFilmes
             AdicionarFilmes(new List<Filmes>
             {
                 new Filmes { Nome = "Eu sou a Lenda", Ano = 2023, Duracao = 120 },
-                new Filmes { Nome = "Filme2", Ano = 2022, Duracao = 90 }
+                new Filmes { Nome = "João", Ano = 2022, Duracao = 90 }
             });
             //ConsultarFilmes();
 
             AdicionarGeneros(new List<Generos>
             {
                 new Generos { Genero = "Aventura" },
-                new Generos { Genero = "Gênero2" }
+                new Generos { Genero = "Ação" }
             });
             
 
