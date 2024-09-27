@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SiteDeFilmes",
+    "\\SiteDeFilmes\\Data",
+    "\\SiteDeFilmes\\Data\\Configuration",
+    "\\SiteDeFilmes\\Models"
   ],
-  "SelectedNode": "\\SiteDeFilmes",
+  "SelectedNode": "\\SiteDeFilmes\\Models\\Atores.cs",
   "PreviewInSolutionExplorer": false
 }

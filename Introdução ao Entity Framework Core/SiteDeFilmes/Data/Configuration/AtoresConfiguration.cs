@@ -14,9 +14,9 @@ namespace SiteDeFilmes.Data.Configuration
         {
                 builder.ToTable("Atores"); // Nome da tabela
                 builder.HasKey(a => a.Id); // Chave primária
-                builder.Property(a => a.PrimeiroNome).HasColumnType("VARCHAR(20)");
-                builder.Property(a => a.UltimoNome).HasColumnType("VARCHAR(20)");
-                builder.Property(a => a.Genero).HasColumnType("VARCHAR(1)");
+                builder.Property(a => a.PrimeiroNome).HasColumnType("VARCHAR(20)").IsRequired(false);
+                builder.Property(a => a.UltimoNome).HasColumnType("VARCHAR(20)").IsRequired(false);
+                builder.Property(a => a.Genero).HasColumnType("VARCHAR(1)").IsRequired(false);
 
                 builder.HasMany(a => a.ElencoFilmes) // Relação um para muitos
                 .WithOne(e => e.Atores) // Relação muitos para um

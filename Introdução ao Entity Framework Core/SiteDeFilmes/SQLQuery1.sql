@@ -1,0 +1,1 @@
+﻿ALTER TABLE Atores ALTER COLUMN PrimeiroNome VARCHAR (20) NULL;

@@ -14,7 +14,7 @@ namespace SiteDeFilmes.Data.Configuration
         {
                 builder.ToTable("Generos");
                 builder.HasKey(g => g.Id);
-                builder.Property(g => g.Genero).HasColumnType("VARCHAR(20)");
+                builder.Property(g => g.Genero).HasColumnType("VARCHAR(20)").IsRequired(false);
 
                 builder.HasMany(g => g.FilmesGeneros)
                 .WithOne(fg => fg.Genero)

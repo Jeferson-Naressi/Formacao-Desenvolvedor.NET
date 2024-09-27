@@ -13,25 +13,25 @@ GO
 
 CREATE TABLE [Atores] (
     [Id] int NOT NULL IDENTITY,
-    [PrimeiroNome] VARCHAR(20) NOT NULL,
-    [UltimoNome] VARCHAR(20) NOT NULL,
-    [Genero] VARCHAR(1) NOT NULL,
+    [PrimeiroNome] VARCHAR(20) NULL,
+    [UltimoNome] VARCHAR(20) NULL,
+    [Genero] VARCHAR(1) NULL,
     CONSTRAINT [PK_Atores] PRIMARY KEY ([Id])
 );
 GO
 
 CREATE TABLE [Filmes] (
     [Id] int NOT NULL IDENTITY,
-    [Nome] VARCHAR(50) NOT NULL,
-    [Ano] int NOT NULL,
-    [Duracao] int NOT NULL,
+    [Nome] VARCHAR(50) NULL,
+    [Ano] int NULL,
+    [Duracao] int NULL,
     CONSTRAINT [PK_Filmes] PRIMARY KEY ([Id])
 );
 GO
 
 CREATE TABLE [Generos] (
     [Id] int NOT NULL IDENTITY,
-    [Genero] VARCHAR(20) NOT NULL,
+    [Genero] VARCHAR(20) NULL,
     CONSTRAINT [PK_Generos] PRIMARY KEY ([Id])
 );
 GO
@@ -40,7 +40,7 @@ CREATE TABLE [ElencoFilmes] (
     [Id] int NOT NULL IDENTITY,
     [IdAtor] int NOT NULL,
     [IdFilmes] int NOT NULL,
-    [Papel] VARCHAR(30) NOT NULL,
+    [Papel] VARCHAR(30) NULL,
     CONSTRAINT [PK_ElencoFilmes] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_ElencoFilmes_Atores_IdAtor] FOREIGN KEY ([IdAtor]) REFERENCES [Atores] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_ElencoFilmes_Filmes_IdFilmes] FOREIGN KEY ([IdFilmes]) REFERENCES [Filmes] ([Id]) ON DELETE CASCADE

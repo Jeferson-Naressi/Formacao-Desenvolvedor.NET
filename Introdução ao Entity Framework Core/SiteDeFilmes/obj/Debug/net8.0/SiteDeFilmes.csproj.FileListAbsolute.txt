@@ -129,3 +129,9 @@ C:\Users\Dell\Documents\Jeferson\Jeferson\Curso-Desenvolvedor.io\Introdução ao
 C:\Users\Dell\Documents\Jeferson\Jeferson\Curso-Desenvolvedor.io\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.pdb
 C:\Users\Dell\Documents\Jeferson\Jeferson\Curso-Desenvolvedor.io\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.genruntimeconfig.cache
 C:\Users\Dell\Documents\Jeferson\Jeferson\Curso-Desenvolvedor.io\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\ref\SiteDeFilmes.dll
+C:\Users\Dell\Documents\Jeferson\Jeferson\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.csproj.AssemblyReference.cache
+C:\Users\Dell\Documents\Jeferson\Jeferson\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Documents\Jeferson\Jeferson\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.AssemblyInfoInputs.cache
+C:\Users\Dell\Documents\Jeferson\Jeferson\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.AssemblyInfo.cs
+C:\Users\Dell\Documents\Jeferson\Jeferson\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Documents\Jeferson\Jeferson\Introdução ao Entity Framework Core\SiteDeFilmes\obj\Debug\net8.0\SiteDeFilmes.sourcelink.json

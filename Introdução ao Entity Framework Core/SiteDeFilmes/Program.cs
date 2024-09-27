@@ -16,14 +16,15 @@ namespace SiteDeFilmes
             AdicionarAtores(new List<Atores>
             {
                 new Atores { PrimeiroNome = "Jeferson", UltimoNome = "Naressi", Genero = "M" },
-                new Atores { PrimeiroNome = "Lucas", UltimoNome = "Amaro", Genero = "F" }
+                new Atores { PrimeiroNome = "Amanda", UltimoNome = "Gomes", Genero = "F" }
             });
+            
             //ConsultarAtores();
 
             AdicionarFilmes(new List<Filmes>
             {
                 new Filmes { Nome = "Eu sou a Lenda", Ano = 2023, Duracao = 120 },
-                new Filmes { Nome = "João", Ano = 2022, Duracao = 90 }
+                new Filmes { Nome = "O Lado bom da vida", Ano = 2022, Duracao = 90 }
             });
             //ConsultarFilmes();
 
@@ -32,6 +33,9 @@ namespace SiteDeFilmes
                 new Generos { Genero = "Aventura" },
                 new Generos { Genero = "Ação" }
             });
+            AdicionarAtores();
+            AdicionarElencos();
+            AdicionarGeneros();
             
 
             //ConsultarGeneros();
