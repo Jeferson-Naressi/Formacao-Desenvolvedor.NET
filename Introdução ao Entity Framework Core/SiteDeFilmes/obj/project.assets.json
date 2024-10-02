@@ -4112,11 +4112,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
       "projectName": "SiteDeFilmes",
-      "projectPath": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
+      "projectPath": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\Introdução ao Entity Framework Core\\SiteDeFilmes\\SiteDeFilmes.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\Curso-Desenvolvedor.io\\Introdução ao Entity Framework Core\\SiteDeFilmes\\obj\\",
+      "outputPath": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\Introdução ao Entity Framework Core\\SiteDeFilmes\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

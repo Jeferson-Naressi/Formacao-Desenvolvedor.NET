@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj": {}
+    "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj": {
+    "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj",
         "projectName": "PrimeiroProjetoMVC",
-        "projectPath": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj",
-        "packagesPath": "C:\\Users\\Jeferson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jeferson\\Desktop\\Curso-Desenvolvedor.io\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\obj\\",
+        "projectPath": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\Documents\\Jeferson\\Jeferson\\ASP.NET MVC\\PrimeiroProjetoMVC\\PrimeiroProjetoMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "J:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jeferson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -94,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
