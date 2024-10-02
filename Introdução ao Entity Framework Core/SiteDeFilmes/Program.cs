@@ -33,9 +33,9 @@ namespace SiteDeFilmes
                 new Generos { Genero = "Aventura" },
                 new Generos { Genero = "Ação" }
             });
-            AdicionarAtores();
-            AdicionarElencos();
-            AdicionarGeneros();
+            //AdicionarAtores();
+            //AdicionarElencos();
+            //AdicionarGeneros();
             
 
             //ConsultarGeneros();
