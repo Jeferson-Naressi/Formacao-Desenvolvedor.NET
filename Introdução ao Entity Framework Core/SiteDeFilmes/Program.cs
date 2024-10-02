@@ -13,26 +13,26 @@ namespace SiteDeFilmes
         static void Main(string[] args)
         {
             // Exemplos de uso
-            AdicionarAtores(new List<Atores>
-            {
-                new Atores { PrimeiroNome = "Jeferson", UltimoNome = "Naressi", Genero = "M" },
-                new Atores { PrimeiroNome = "Amanda", UltimoNome = "Gomes", Genero = "F" }
-            });
+            //AdicionarAtores(new List<Atores>
+            //{
+            //    new Atores { PrimeiroNome = "Jeferson", UltimoNome = "Naressi", Genero = "M" },
+            //    new Atores { PrimeiroNome = "Amanda", UltimoNome = "Gomes", Genero = "F" }
+            //});
             
-            //ConsultarAtores();
+            ////ConsultarAtores();
 
-            AdicionarFilmes(new List<Filmes>
-            {
-                new Filmes { Nome = "Eu sou a Lenda", Ano = 2023, Duracao = 120 },
-                new Filmes { Nome = "O Lado bom da vida", Ano = 2022, Duracao = 90 }
-            });
-            //ConsultarFilmes();
+            //AdicionarFilmes(new List<Filmes>
+            //{
+            //    new Filmes { Nome = "Eu sou a Lenda", Ano = 2023, Duracao = 120 },
+            //    new Filmes { Nome = "O Lado bom da vida", Ano = 2022, Duracao = 90 }
+            //});
+            ////ConsultarFilmes();
 
-            AdicionarGeneros(new List<Generos>
-            {
-                new Generos { Genero = "Aventura" },
-                new Generos { Genero = "Ação" }
-            });
+            //AdicionarGeneros(new List<Generos>
+            //{
+            //    new Generos { Genero = "Aventura" },
+            //    new Generos { Genero = "Ação" }
+            //});
             //AdicionarAtores();
             //AdicionarElencos();
             //AdicionarGeneros();
@@ -55,9 +55,9 @@ namespace SiteDeFilmes
             //DeletarFilmeGenero(1);
 
             // Consultas após atualizações e exclusões
-            //ConsultarAtores();
-            //ConsultarFilmes();
-            //ConsultarGeneros();
+            ConsultarAtores();
+            ConsultarFilmes();
+            ConsultarGeneros();
             //ConsultarElenco();
             //ConsultarFilmesGeneros();
             
@@ -78,7 +78,7 @@ namespace SiteDeFilmes
             var atores = context.Atores.ToList();
             foreach (var ator in atores)
             {
-                Console.WriteLine($"{ator.PrimeiroNome} {ator.UltimoNome}");
+                Console.WriteLine($"Id:{ator.Id}, Nome: {ator.PrimeiroNome} {ator.UltimoNome}");
             }
         }
 
@@ -129,7 +129,7 @@ namespace SiteDeFilmes
             var filmes = context.Filmes.ToList();
             foreach (var filme in filmes)
             {
-                Console.WriteLine($"Filme: {filme.Nome}, Ano: {filme.Ano}");
+                Console.WriteLine($"Id:{filme.Id}, filme: {filme.Nome}, Ano: {filme.Ano}");
             }
         }
 
@@ -180,7 +180,7 @@ namespace SiteDeFilmes
             var generos = context.Generos.ToList();
             foreach (var gen in generos)
             {
-                Console.WriteLine($"Gênero: {gen.Genero}");
+                Console.WriteLine($"Id:{gen.Id}, Gênero: {gen.Genero}");
             }
         }
 
@@ -231,7 +231,7 @@ namespace SiteDeFilmes
             var elenco = context.ElencoFilmes.ToList();
             foreach (var item in elenco)
             {
-                Console.WriteLine($"Ator ID: {item.IdAtor}, Filme ID: {item.IdFilmes}, Papel: {item.Papel}");
+                Console.WriteLine($"Id:{item.Id}, Ator ID: {item.IdAtor}, Filme ID: {item.IdFilmes}, Papel: {item.Papel}");
             }
         }
 
@@ -282,7 +282,7 @@ namespace SiteDeFilmes
             var filmesGeneros = context.FilmesGeneros.ToList();
             foreach (var item in filmesGeneros)
             {
-                Console.WriteLine($"Filme ID: {item.IdFilmes}, Gênero ID: {item.IdGenero}");
+                Console.WriteLine($"ID:{item.Id}, Filme ID: {item.IdFilmes}, Gênero ID: {item.IdGenero}");
             }
         }
 
