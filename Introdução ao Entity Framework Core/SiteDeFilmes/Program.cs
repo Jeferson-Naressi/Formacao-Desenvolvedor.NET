@@ -1,10 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Net;
+using System.Numerics;
 using System.Reflection;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.Intrinsics.X86;
+using System.Security.Claims;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
 using SiteDeFilmes.Data;
 using SiteDeFilmes.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SiteDeFilmes
 {
@@ -13,26 +22,88 @@ namespace SiteDeFilmes
         static void Main(string[] args)
         {
             // Exemplos de uso
-            //AdicionarAtores(new List<Atores>
-            //{
-            //    new Atores { PrimeiroNome = "Jeferson", UltimoNome = "Naressi", Genero = "M" },
-            //    new Atores { PrimeiroNome = "Amanda", UltimoNome = "Gomes", Genero = "F" }
-            //});
+            AdicionarAtores(new List<Atores>
+            {
+                new Atores { PrimeiroNome = "James", UltimoNome = "Stewart", Genero = "M"},
+                new Atores { PrimeiroNome = "Deborah", UltimoNome = "Kerr", Genero = "F" },
+                new Atores { PrimeiroNome = "Peter", UltimoNome = "O'Toole", Genero = "M" },
+                new Atores { PrimeiroNome = "Robert",UltimoNome ="DeNiro", Genero = "M" },
+                new Atores { PrimeiroNome = "Harrison", UltimoNome = "Ford", Genero = "M" },
+                new Atores { PrimeiroNome = "Stephen", UltimoNome = "Baldwin", Genero = "M" },
+                new Atores { PrimeiroNome = "Jack", UltimoNome = "Nicholson", Genero= "M" },
+                new Atores { PrimeiroNome = "Mark", UltimoNome = "Wahlberg", Genero = "M" },
+                new Atores { PrimeiroNome = "Woody", UltimoNome = "Allen", Genero = "M" },
+                new Atores { PrimeiroNome = "Claire", UltimoNome = "Danes", Genero = "F" },
+                new Atores { PrimeiroNome = "Tim", UltimoNome = "Robbins",Genero = "M" },
+                new Atores { PrimeiroNome = "Kevin", UltimoNome = "Spacey", Genero = "M" },
+                new Atores { PrimeiroNome = "Kate", UltimoNome = "Winslet",Genero ="F" },
+//Robin Williams, M
+//Jon Voight, M
+//Ewan McGregor, M
+//Christian Bale, M
+//Maggie Gyllenhaal, F
+//Dev Patel, M
+//Sigourney Weaver, F
+//David Aston, M
+//Ali Astin, F
+
+            });
             
             ////ConsultarAtores();
 
-            //AdicionarFilmes(new List<Filmes>
-            //{
-            //    new Filmes { Nome = "Eu sou a Lenda", Ano = 2023, Duracao = 120 },
-            //    new Filmes { Nome = "O Lado bom da vida", Ano = 2022, Duracao = 90 }
-            //});
-            ////ConsultarFilmes();
+            AdicionarFilmes(new List<Filmes>
+            {
+                new Filmes { Nome = "Um Corpo que Cai", Ano = 1958, Duracao = 128 },
+                new Filmes { Nome = "Os Inocentes", Ano = 1961, Duracao = 100 },
+                new Filmes { Nome = "Lawrence da Arábia", Ano = 1962, Duracao = 216 },
+                new Filmes { Nome = "O Franco Atirador", Ano = 1978, Duracao = 183 },
+                new Filmes { Nome = "Amadeus", Ano = 1984, Duracao = 160 },
+                new Filmes { Nome = "Blade Runner", Ano = 1982, Duracao = 117 },
+                new Filmes { Nome = "De Olhos Bem Fechados", Ano = 1999, Duracao = 159 },
+                new Filmes { Nome = "Os Suspeitos", Ano = 1995, Duracao = 106 },
+                new Filmes { Nome = "Chinatown", Ano = 1974, Duracao = 130 },
+                new Filmes { Nome = "Boogie Nights - Prazer Sem Limites", Ano = 1997, Duracao = 155 },
+                new Filmes { Nome = "Noivo Neurótico, Noiva Nervosa", Ano = 1977, Duracao = 93 },
+                new Filmes { Nome = "Princesa Mononoke", Ano = 1997, Duracao = 134 },
+                new Filmes { Nome = "Um Sonho de Liberdade", Ano = 1994, Duracao = 142 },
+                new Filmes { Nome = "Beleza Americana", Ano = 1999, Duracao = 122 },
+                new Filmes { Nome = "Titanic", Ano = 1997, Duracao = 194 },
+                new Filmes { Nome = "Gênio Indomável", Ano = 1997, Duracao = 126 },
+                new Filmes { Nome = "Amargo pesadelo", Ano = 1972, Duracao = 109 },
+                new Filmes { Nome = "Trainspotting - Sem Limites", Ano = 1976, Duracao = 94 },
+                new Filmes { Nome = "O Grande Truque", Ano = 2006, Duracao = 130 },
 
-            //AdicionarGeneros(new List<Generos>
-            //{
-            //    new Generos { Genero = "Aventura" },
-            //    new Generos { Genero = "Ação" }
-            //});
+//Donnie Darko, 2001, 113 min
+//Quem Quer Ser um Milionário?, 2008, 120 min
+//Aliens, O Resgate, 1986, 137 min
+//Uma Vida sem Limites, 2004, 118 min
+//Avatar, 2009, 162 min
+//Coração Valente, 1995, 178 min
+//Os Sete Samurais, 1954, 207 min
+//A Viagem de Chihiro, 2001, 125 min
+//De Volta para o Futuro, 1985, 116 min
+
+
+            });
+            //ConsultarFilmes();
+
+            AdicionarGeneros(new List<Generos>
+            {
+                new Generos { Genero = "Ação" },
+                new Generos { Genero = "Aventura" },
+                new Generos { Genero = "Animação" },
+                new Generos { Genero = "Biografia" },
+                new Generos { Genero = "Comédia" },
+                new Generos { Genero = "Crime" },
+                new Generos { Genero = "Drama" },
+                new Generos { Genero = "Horror" },
+                new Generos { Genero = "Musical" },
+                new Generos { Genero = "Mistério" },
+                new Generos { Genero = "Romance" },
+                new Generos { Genero = "Suspense" },
+                new Generos { Genero = "Guerra" },
+
+            });
             //AdicionarAtores();
             //AdicionarElencos();
             //AdicionarGeneros();
