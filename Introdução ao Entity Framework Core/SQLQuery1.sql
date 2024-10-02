@@ -1,0 +1,1 @@
+﻿ALTER TABLE Atores ALTER COLUMN Genero Varchar(1);

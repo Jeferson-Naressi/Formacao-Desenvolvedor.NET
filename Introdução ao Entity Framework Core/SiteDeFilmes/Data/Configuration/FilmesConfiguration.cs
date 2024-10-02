@@ -15,8 +15,8 @@ namespace SiteDeFilmes.Data.Configuration
                 builder.ToTable("Filmes");
                 builder.HasKey(f => f.Id);
                 builder.Property(f => f.Nome).HasColumnType("VARCHAR(50)").IsRequired(false);
-                builder.Property(f => f.Ano).HasConversion<int>().IsRequired(false);
-                builder.Property(f => f.Duracao).HasConversion<int>().IsRequired(false);
+                builder.Property(f => f.Ano).HasConversion<int>();
+                builder.Property(f => f.Duracao).HasConversion<int>();
 
                 builder.HasMany(f => f.ElencoFilmes)
                 .WithOne(e => e.Filme)
