@@ -22,88 +22,35 @@ namespace SiteDeFilmes
         static void Main(string[] args)
         {
             // Exemplos de uso
-            AdicionarAtores(new List<Atores>
-            {
-                new Atores { PrimeiroNome = "James", UltimoNome = "Stewart", Genero = "M"},
-                new Atores { PrimeiroNome = "Deborah", UltimoNome = "Kerr", Genero = "F" },
-                new Atores { PrimeiroNome = "Peter", UltimoNome = "O'Toole", Genero = "M" },
-                new Atores { PrimeiroNome = "Robert",UltimoNome ="DeNiro", Genero = "M" },
-                new Atores { PrimeiroNome = "Harrison", UltimoNome = "Ford", Genero = "M" },
-                new Atores { PrimeiroNome = "Stephen", UltimoNome = "Baldwin", Genero = "M" },
-                new Atores { PrimeiroNome = "Jack", UltimoNome = "Nicholson", Genero= "M" },
-                new Atores { PrimeiroNome = "Mark", UltimoNome = "Wahlberg", Genero = "M" },
-                new Atores { PrimeiroNome = "Woody", UltimoNome = "Allen", Genero = "M" },
-                new Atores { PrimeiroNome = "Claire", UltimoNome = "Danes", Genero = "F" },
-                new Atores { PrimeiroNome = "Tim", UltimoNome = "Robbins",Genero = "M" },
-                new Atores { PrimeiroNome = "Kevin", UltimoNome = "Spacey", Genero = "M" },
-                new Atores { PrimeiroNome = "Kate", UltimoNome = "Winslet",Genero ="F" },
-//Robin Williams, M
-//Jon Voight, M
-//Ewan McGregor, M
-//Christian Bale, M
-//Maggie Gyllenhaal, F
-//Dev Patel, M
-//Sigourney Weaver, F
-//David Aston, M
-//Ali Astin, F
+            //AdicionarAtores(new List<Atores>
+            //{
+            //    new Atores { PrimeiroNome = "Robin", UltimoNome = "Williams", Genero = "M"},
+            //    new Atores { PrimeiroNome = "Jon", UltimoNome = "Voight", Genero = "M" },
+            //    new Atores { PrimeiroNome = "Ewan", UltimoNome = "O'McGregor", Genero = "M" },
+            //    new Atores { PrimeiroNome = "Christian",UltimoNome ="Bale", Genero = "F" },
+            //    new Atores { PrimeiroNome = "Maggie",UltimoNome ="Gyllenhaal", Genero = "M" },
+            //    new Atores { PrimeiroNome = "Dev",UltimoNome ="Patel", Genero = "M" },
+            //    new Atores { PrimeiroNome = "Sigourney",UltimoNome ="Weaver", Genero = "F" },
+            //    new Atores { PrimeiroNome = "David",UltimoNome ="Aston", Genero = "M" },
+            //    new Atores { PrimeiroNome = "Ali",UltimoNome ="Astin", Genero = "F" },
 
-            });
+            //});
             
             ////ConsultarAtores();
 
-            AdicionarFilmes(new List<Filmes>
-            {
-                new Filmes { Nome = "Um Corpo que Cai", Ano = 1958, Duracao = 128 },
-                new Filmes { Nome = "Os Inocentes", Ano = 1961, Duracao = 100 },
-                new Filmes { Nome = "Lawrence da Arábia", Ano = 1962, Duracao = 216 },
-                new Filmes { Nome = "O Franco Atirador", Ano = 1978, Duracao = 183 },
-                new Filmes { Nome = "Amadeus", Ano = 1984, Duracao = 160 },
-                new Filmes { Nome = "Blade Runner", Ano = 1982, Duracao = 117 },
-                new Filmes { Nome = "De Olhos Bem Fechados", Ano = 1999, Duracao = 159 },
-                new Filmes { Nome = "Os Suspeitos", Ano = 1995, Duracao = 106 },
-                new Filmes { Nome = "Chinatown", Ano = 1974, Duracao = 130 },
-                new Filmes { Nome = "Boogie Nights - Prazer Sem Limites", Ano = 1997, Duracao = 155 },
-                new Filmes { Nome = "Noivo Neurótico, Noiva Nervosa", Ano = 1977, Duracao = 93 },
-                new Filmes { Nome = "Princesa Mononoke", Ano = 1997, Duracao = 134 },
-                new Filmes { Nome = "Um Sonho de Liberdade", Ano = 1994, Duracao = 142 },
-                new Filmes { Nome = "Beleza Americana", Ano = 1999, Duracao = 122 },
-                new Filmes { Nome = "Titanic", Ano = 1997, Duracao = 194 },
-                new Filmes { Nome = "Gênio Indomável", Ano = 1997, Duracao = 126 },
-                new Filmes { Nome = "Amargo pesadelo", Ano = 1972, Duracao = 109 },
-                new Filmes { Nome = "Trainspotting - Sem Limites", Ano = 1976, Duracao = 94 },
-                new Filmes { Nome = "O Grande Truque", Ano = 2006, Duracao = 130 },
+            //AdicionarFilmes(new List<Filmes>
+            //{
+            //    new Filmes { Nome = "Donnie Darko", Ano = 2001, Duracao = 113 },
+            //    new Filmes { Nome = "Quem Quer Ser um Milionário?", Ano = 2001, Duracao = 120 },
+            //    new Filmes { Nome = "Aliens, O Resgate", Ano = 1986, Duracao = 137 },
+            //    new Filmes { Nome = "Uma Vida sem Limites", Ano = 2009, Duracao = 162 },
+            //    new Filmes { Nome = "Os Sete Samurais", Ano = 1954, Duracao = 207 },
+            //    new Filmes { Nome = "A Viagem de Chihiro", Ano = 2001, Duracao = 125 },
+            //    new Filmes { Nome = "De Volta para o Futuro", Ano = 1985, Duracao = 116 },
+            //});
 
-//Donnie Darko, 2001, 113 min
-//Quem Quer Ser um Milionário?, 2008, 120 min
-//Aliens, O Resgate, 1986, 137 min
-//Uma Vida sem Limites, 2004, 118 min
-//Avatar, 2009, 162 min
-//Coração Valente, 1995, 178 min
-//Os Sete Samurais, 1954, 207 min
-//A Viagem de Chihiro, 2001, 125 min
-//De Volta para o Futuro, 1985, 116 min
-
-
-            });
             //ConsultarFilmes();
 
-            AdicionarGeneros(new List<Generos>
-            {
-                new Generos { Genero = "Ação" },
-                new Generos { Genero = "Aventura" },
-                new Generos { Genero = "Animação" },
-                new Generos { Genero = "Biografia" },
-                new Generos { Genero = "Comédia" },
-                new Generos { Genero = "Crime" },
-                new Generos { Genero = "Drama" },
-                new Generos { Genero = "Horror" },
-                new Generos { Genero = "Musical" },
-                new Generos { Genero = "Mistério" },
-                new Generos { Genero = "Romance" },
-                new Generos { Genero = "Suspense" },
-                new Generos { Genero = "Guerra" },
-
-            });
             //AdicionarAtores();
             //AdicionarElencos();
             //AdicionarGeneros();
@@ -125,7 +72,7 @@ namespace SiteDeFilmes
             //DeletarElenco(1);
             //DeletarFilmeGenero(1);
 
-            // Consultas após atualizações e exclusões
+            // Consultas 
             ConsultarAtores();
             ConsultarFilmes();
             ConsultarGeneros();
@@ -200,7 +147,7 @@ namespace SiteDeFilmes
             var filmes = context.Filmes.ToList();
             foreach (var filme in filmes)
             {
-                Console.WriteLine($"Id:{filme.Id}, filme: {filme.Nome}, Ano: {filme.Ano}");
+                Console.WriteLine($"Id:{filme.Id}, filme: {filme.Nome}, Ano: {filme.Ano}, Duração: {filme.Duracao} mins");
             }
         }
 
