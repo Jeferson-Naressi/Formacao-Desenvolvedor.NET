@@ -10,5 +10,5 @@ O curso começa com os fundamentos do C#, a base para tudo que vamos construir. 
 - Iniciando com ASP.NET Core
 - Introdução ao Entity Framework Core
 - Fundamentos do ASP.NET MVC
-- Fundamentos de APIs em ASP.NET Core
+- Fundamentos de APIs em ASP.NET Core (Visto a necessidade o repositório está https://github.com/Jeferson-Naressi/PrimeiraAPI
 - Fundamentos do Blazor
